@@ -1,77 +1,120 @@
 <template>
   <section class="projects" id="projects">
-    <h2>Projetos</h2>
-    <div class="project-list">
-      <div class="project-card" v-for="n in 7" :key="n">
-        <h3>Projeto {{ n }}</h3>
-        <p>Breve descrição do projeto.</p>
+    <h2>🧪 Central de Projetos Intergalácticos</h2>
+    <div class="project-grid">
+      <div class="project-holo" v-for="n in 6" :key="n">
+        <div class="holo-glow">
+          <h3>Projeto #{{ n }}</h3>
+          <p>
+            Sinal captado de um protótipo avançado criado no laboratório orbital de Davi Rocha. 
+            Tecnologia: desconhecida. Estilo: fora deste mundo.
+          </p>
+        </div>
       </div>
     </div>
   </section>
 </template>
 
 <style scoped>
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap');
+
 .projects {
-  max-width: 1000px;
-  margin: 4rem auto;
-  padding: 0 1rem;
-  color: #d1f0e6;
-  font-family: 'Poppins', sans-serif;
+  padding: 5rem 2rem;
+  background: radial-gradient(ellipse at center, #0d0d0d 0%, #050505 100%);
+  font-family: 'Orbitron', sans-serif;
+  color: #ccffee;
   text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.projects::before {
+  content: '';
+  position: absolute;
+  width: 120%;
+  height: 100%;
+  background: url('https://www.transparenttextures.com/patterns/nebula.png');
+  opacity: 0.02;
+  top: 0;
+  left: -10%;
+  z-index: 0;
+  animation: drift 60s linear infinite;
+}
+
+@keyframes drift {
+  0% { background-position: 0 0; }
+  100% { background-position: 1000px 1000px; }
 }
 
 h2 {
-  font-weight: 600;
-  font-size: 2rem;
-  margin-bottom: 2rem;
-  color: #00bfa6;
+  font-size: 2.4rem;
+  margin-bottom: 3rem;
+  color: #7fff00;
+  text-shadow: 0 0 15px #00ffae;
+  position: relative;
+  z-index: 1;
+  animation: flicker 2s infinite alternate;
 }
 
-.project-list {
+@keyframes flicker {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.85; }
+}
+
+.project-grid {
   display: flex;
   flex-wrap: wrap;
-  gap: 1.5rem;
+  gap: 2rem;
   justify-content: center;
+  position: relative;
+  z-index: 1;
 }
 
-.project-card {
-  background: #111;
-  padding: 1.5rem;
-  border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0, 191, 166, 0.3);
-  flex: 1 1 280px;
-  max-width: 320px;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  cursor: default;
+.project-holo {
+  perspective: 1000px;
 }
 
-.project-card:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 10px 20px rgba(0, 191, 166, 0.6);
+.holo-glow {
+  background: linear-gradient(135deg, rgba(0,255,204,0.08), rgba(127,255,0,0.05));
+  border: 1px solid rgba(0, 255, 204, 0.2);
+  box-shadow:
+    0 0 20px rgba(0, 255, 204, 0.1),
+    inset 0 0 10px rgba(0, 255, 204, 0.1);
+  padding: 2rem;
+  border-radius: 20px;
+  width: 280px;
+  transform-style: preserve-3d;
+  transform: rotateX(4deg) rotateY(12deg);
+  transition: transform 0.6s ease, box-shadow 0.6s ease;
 }
 
-.project-card h3 {
-  font-weight: 600;
+.project-holo:hover .holo-glow {
+  transform: rotateX(0deg) rotateY(0deg) scale(1.05);
+  box-shadow:
+    0 0 30px rgba(0, 255, 204, 0.5),
+    inset 0 0 20px rgba(127, 255, 212, 0.3);
+}
+
+.holo-glow h3 {
   font-size: 1.3rem;
+  color: #00fff7;
   margin-bottom: 0.75rem;
-  color: #00bfa6;
+  text-shadow: 0 0 8px #00fff7;
 }
 
-.project-card p {
-  font-weight: 400;
-  font-size: 1rem;
-  line-height: 1.5;
-  color: #c0dcd7;
+.holo-glow p {
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: #aaffee;
 }
 
 @media (max-width: 600px) {
-  .project-list {
-    flex-direction: column;
-    gap: 1.25rem;
+  h2 {
+    font-size: 1.8rem;
   }
 
-  .project-card {
-    max-width: 100%;
+  .holo-glow {
+    width: 100%;
   }
 }
 </style>
