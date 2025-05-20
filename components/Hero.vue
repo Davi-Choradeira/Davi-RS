@@ -1,10 +1,17 @@
 <template>
   <section class="hero">
+    <div class="stars"></div>
     <div class="container">
-      <h1>Olá, eu sou <span class="highlight">Davi</span></h1>
-      <h2>Desenvolvedor Front-end</h2>
-      <p>Transformo ideias em interfaces modernas e funcionais.</p>
-      <button @click="verProjetos" aria-label="Ver meus projetos">Ver Projetos</button>
+      <h1>
+        Saudações, terráqueos.<br />
+        Eu sou <span class="highlight">Davi Rocha</span>
+      </h1>
+      <h2>Desbravador de Interfaces | Front-end Developer</h2>
+      <p>
+        Nascido sob constelações criativas, transformo ideias em experiências intergalácticas. 
+        Se você precisa de um site fora deste mundo, acabou de encontrar seu desenvolvedor.
+      </p>
+      <button @click="verProjetos" aria-label="Ver meus projetos">Explorar Galáxia</button>
     </div>
   </section>
 </template>
@@ -16,74 +23,94 @@ const verProjetos = () => {
 </script>
 
 <style scoped>
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600&display=swap');
 
 .hero {
+  position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 80vh;
-  background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
-  color: #fff;
-  font-family: 'Poppins', sans-serif;
-  padding: 2rem 1rem;
+  min-height: 100vh;
+  background: radial-gradient(circle at center, #0d0d0d 0%, #000 100%);
+  overflow: hidden;
+  color: #e0ffe6;
+  font-family: 'Orbitron', sans-serif;
+  padding: 2rem;
   text-align: center;
 }
 
+.stars {
+  position: absolute;
+  width: 200%;
+  height: 200%;
+  background: transparent url('https://www.transparenttextures.com/patterns/stardust.png') repeat;
+  animation: moveStars 120s linear infinite;
+  opacity: 0.2;
+  z-index: 0;
+}
+
+@keyframes moveStars {
+  from { transform: translate(0, 0); }
+  to { transform: translate(-50%, -50%); }
+}
+
 .container {
-  max-width: 600px;
+  max-width: 700px;
+  z-index: 1;
 }
 
 h1 {
   font-weight: 600;
-  font-size: 3rem;
-  margin-bottom: 0.5rem;
+  font-size: 2.8rem;
+  margin-bottom: 1rem;
+  color: #00fff7;
 }
 
 .highlight {
-  color: #00bfa6;
+  color: #7fff00;
+  text-shadow: 0 0 8px #7fff00;
 }
 
 h2 {
   font-weight: 400;
-  font-size: 1.8rem;
-  margin-bottom: 1.5rem;
-  color: #a0e9d3;
+  font-size: 1.6rem;
+  margin-bottom: 1.2rem;
+  color: #9efff3;
 }
 
 p {
-  font-weight: 400;
-  font-size: 1.2rem;
+  font-weight: 300;
+  font-size: 1.1rem;
   margin-bottom: 2rem;
-  line-height: 1.5;
-  color: #d1f0e6;
+  line-height: 1.6;
+  color: #d8ffe8;
 }
 
 button {
-  background-color: #00bfa6;
+  background: linear-gradient(135deg, #00fff7, #7fff00);
   border: none;
-  border-radius: 30px;
-  padding: 0.85rem 2.5rem;
+  border-radius: 50px;
+  padding: 0.9rem 2.8rem;
   font-weight: 600;
   font-size: 1.1rem;
+  color: #000;
   cursor: pointer;
-  color: #0f2027;
-  box-shadow: 0 6px 10px rgba(0, 191, 166, 0.6);
-  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 0 15px rgba(0, 255, 200, 0.7);
+  transition: all 0.3s ease;
 }
 
 button:hover {
-  background-color: #019374;
-  box-shadow: 0 8px 15px rgba(1, 147, 116, 0.8);
+  box-shadow: 0 0 25px rgba(127, 255, 0, 0.9);
+  transform: scale(1.05);
 }
 
 @media (max-width: 600px) {
   h1 {
-    font-size: 2.2rem;
+    font-size: 2rem;
   }
 
   h2 {
-    font-size: 1.4rem;
+    font-size: 1.2rem;
   }
 
   p {
