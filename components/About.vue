@@ -1,46 +1,60 @@
 <template>
   <section class="about" id="about">
-    <h2>Sobre mim</h2>
+    <h2>🛸 Quem é Davi Rocha?</h2>
     <p>
-      Sou um desenvolvedor frontend apaixonado por criar experiências digitais
-      intuitivas com foco em design, performance e acessibilidade.
+      Explorador digital de uma galáxia onde o design encontra a tecnologia. Minha missão? Codificar universos visuais 
+      acessíveis, responsivos e com performance interestelar. Com habilidades forjadas entre nebulosas de criatividade 
+      e sistemas solares de lógica, estou sempre pronto para o próximo salto hiperespacial.
     </p>
   </section>
 </template>
 
 <style scoped>
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600&display=swap');
 
 .about {
-  max-width: 700px;
-  margin: 4rem auto;
-  padding: 0 1rem;
-  color: #d1f0e6;
-  font-family: 'Poppins', sans-serif;
+  max-width: 800px;
+  margin: 6rem auto;
+  padding: 2rem 1rem;
   text-align: center;
+  color: #caffee;
+  font-family: 'Orbitron', sans-serif;
+  position: relative;
+  background: rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(0, 255, 204, 0.2);
+  border-radius: 20px;
+  backdrop-filter: blur(8px);
+  box-shadow: 0 0 40px rgba(0, 255, 170, 0.1);
 }
 
 h2 {
+  font-size: 2.2rem;
   font-weight: 600;
-  font-size: 2rem;
-  margin-bottom: 1.25rem;
-  color: #00bfa6;
+  margin-bottom: 1.5rem;
+  color: #7fff00;
+  text-shadow: 0 0 6px #7fff00;
+  animation: pulseGlow 2s ease-in-out infinite;
+}
+
+@keyframes pulseGlow {
+  0%, 100% {
+    text-shadow: 0 0 6px #7fff00;
+  }
+  50% {
+    text-shadow: 0 0 20px #7fff00;
+  }
 }
 
 p {
-  font-weight: 400;
   font-size: 1.15rem;
-  line-height: 1.6;
-  color: #c0dcd7;
+  line-height: 1.7;
+  color: #d2fff2;
+  padding: 0 1rem;
 }
 
 @media (max-width: 600px) {
-  .about {
-    margin: 3rem 1rem;
-  }
-
   h2 {
-    font-size: 1.5rem;
+    font-size: 1.6rem;
   }
 
   p {
