@@ -1,13 +1,23 @@
 <template>
-  <section class="about" id="about">
-    <h2>🛸 Quem é Davi Rocha?</h2>
-    <p>
+  <section class="about" id="about" data-aos="fade-left" data-aos-duration="1500">
+    <h2 data-aos="fade-up" data-aos-delay="300">🛸 Quem é Davi Rocha?</h2>
+    <p data-aos="fade-up" data-aos-delay="600">
       Explorador digital de uma galáxia onde o design encontra a tecnologia. Minha missão? Codificar universos visuais 
       acessíveis, responsivos e com performance interestelar. Com habilidades forjadas entre nebulosas de criatividade 
       e sistemas solares de lógica, estou sempre pronto para o próximo salto hiperespacial.
     </p>
   </section>
 </template>
+
+<script setup>
+import { onMounted } from 'vue';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
+
+onMounted(() => {
+  AOS.init();
+});
+</script>
 
 <style scoped>
 @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600&display=swap');
@@ -56,7 +66,6 @@ p {
   h2 {
     font-size: 1.6rem;
   }
-
   p {
     font-size: 1rem;
   }

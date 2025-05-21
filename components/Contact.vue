@@ -1,32 +1,38 @@
 <template>
   <section class="contact">
-    <h2>📡 Estação de Contato</h2>
+    <h2 data-aos="fade-up" data-aos-duration="1200">📡 Estação de Contato</h2>
     <ul>
-      <li>
-        <span class="label"> Transmissão via Email:</span>
-        <a href="mailto:davi@email.com">davi@email.com</a>
-      </li>
-      <li>
-        <span class="label"> Conexão LinkedIn:</span>
-        <a href="https://linkedin.com/in/davi" target="_blank" rel="noopener noreferrer">
-          linkedin.com/in/davi
-        </a>
-      </li>
-      <li>
-        <span class="label"> Base GitHub:</span>
-        <a href="https://github.com/davi" target="_blank" rel="noopener noreferrer">
-          github.com/davi
-        </a>
-      </li>
-      <li>
-        <span class="label"> Sinal Instagram:</span>
-        <a href="https://instagram.com/davi" target="_blank" rel="noopener noreferrer">
-          instagram.com/davi
-        </a>
+      <li 
+        v-for="(item, index) in contacts" 
+        :key="item.label" 
+        class="contact-item"
+        data-aos="flip-up"
+        :data-aos-delay="index * 250"
+        data-aos-duration="1000"
+      >
+        <span class="label">{{ item.label }}</span>
+        <a :href="item.url" target="_blank" rel="noopener noreferrer">{{ item.text }}</a>
       </li>
     </ul>
   </section>
 </template>
+
+<script setup>
+import { onMounted } from 'vue';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
+
+onMounted(() => {
+  AOS.init();
+});
+
+const contacts = [
+  { label: 'Transmissão via Email:', text: 'davi@email.com', url: 'mailto:davi@email.com' },
+  { label: 'Conexão LinkedIn:', text: 'linkedin.com/in/davi', url: 'https://linkedin.com/in/davi' },
+  { label: 'Base GitHub:', text: 'github.com/davi', url: 'https://github.com/davi' },
+  { label: 'Sinal Instagram:', text: 'instagram.com/davi', url: 'https://instagram.com/davi' }
+];
+</script>
 
 <style scoped>
 @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap');
@@ -76,7 +82,7 @@
   padding: 0;
 }
 
-.contact li {
+.contact-item {
   margin: 1rem 0;
   font-size: 1.1rem;
   color: #ccffee;
@@ -84,6 +90,18 @@
   flex-direction: column;
   align-items: center;
   gap: 0.3rem;
+  padding: 1rem;
+  border-radius: 10px;
+  background: rgba(0, 255, 204, 0.08);
+  border: 1px solid rgba(0, 255, 204, 0.3);
+  box-shadow: 0 0 20px rgba(0, 255, 204, 0.2);
+  backdrop-filter: blur(6px);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.contact-item:hover {
+  transform: scale(1.08);
+  box-shadow: 0 0 30px rgba(0, 255, 204, 0.5);
 }
 
 .contact .label {
@@ -128,8 +146,9 @@
     font-size: 1.6rem;
   }
 
-  .contact li {
+  .contact-item {
     font-size: 1rem;
+    padding: 0.8rem;
   }
 
   .contact .label {

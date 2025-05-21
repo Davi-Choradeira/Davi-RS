@@ -1,8 +1,15 @@
 <template>
   <section class="projects" id="projects">
-    <h2>🧪 Central de Projetos Intergalácticos</h2>
+    <h2 data-aos="flip-up" data-aos-duration="1500">🧪 Central de Projetos Intergalácticos</h2>
     <div class="project-grid">
-      <div class="project-holo" v-for="n in 6" :key="n">
+      <div 
+        class="project-holo" 
+        v-for="n in 6" 
+        :key="n" 
+        data-aos="fade-right" 
+        :data-aos-delay="n * 200"
+        data-aos-duration="1200"
+      >
         <div class="holo-glow">
           <h3>Projeto #{{ n }}</h3>
           <p>
@@ -15,12 +22,21 @@
   </section>
 </template>
 
+<script setup>
+import { onMounted } from 'vue';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
+
+onMounted(() => {
+  AOS.init();
+});
+</script>
+
 <style scoped>
 @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap');
 
 .projects {
   padding: 5rem 2rem;
-  background: radial-gradient(ellipse at center, #0d0d0d 0%, #050505 100%);
   font-family: 'Orbitron', sans-serif;
   color: #ccffee;
   text-align: center;

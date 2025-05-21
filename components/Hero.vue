@@ -1,44 +1,130 @@
 <template>
   <section class="hero">
+    <!-- Navbar -->
+    <header class="navbar">
+      <div class="logo">DAVI </div>
+      <button class="hamburger" @click="isOpen = !isOpen">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+            d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
+      </button>
+      <nav :class="{ open: isOpen }">
+        <ul>
+          <li><a href="#about" @click="closeMenu">Sobre</a></li>
+          <li><a href="#projects" @click="closeMenu">Projetos</a></li>
+          <li><a href="#skills" @click="closeMenu">Habilidades</a></li>
+          <li><a href="#contact" @click="closeMenu">Contato</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <!-- Estrelas de fundo -->
     <div class="stars"></div>
+
+    <!-- Conteúdo do Hero -->
     <div class="container">
-      <h1>
-        Saudações, terráqueos.<br />
-        Eu sou <span class="highlight">Davi Rocha</span>
-      </h1>
-      <h2>Desbravador de Interfaces | Front-end Developer</h2>
-      <p>
-        Nascido sob constelações criativas, transformo ideias em experiências intergalácticas. 
-        Se você precisa de um site fora deste mundo, acabou de encontrar seu desenvolvedor.
-      </p>
-      <button @click="verProjetos" aria-label="Ver meus projetos">Explorar Galáxia</button>
+      <h1>Olá, sou <span class="highlight">Davi Rocha</span></h1>
+      <h2>Desenvolvedor Front-End com estilo alienígena futurista</h2>
+      <p>Transformo ideias em experiências digitais intuitivas e impactantes. Meu trabalho é focado na criação de interfaces modernas, acessíveis e alinhadas às necessidades dos usuários. Busco sempre a inovação e a eficiência, garantindo que cada projeto seja visualmente atraente e de alto desempenho.
+Explore meus projetos e descubra como posso agregar valor ao seu próximo desafio digital.
+</p>
+      <button @click="scrollToSection('projects')">Ver Projetos</button>
     </div>
   </section>
 </template>
 
 <script setup>
-const verProjetos = () => {
-  window.location.href = "#projects";
-};
+import { ref } from 'vue'
+
+const isOpen = ref(false)
+
+const scrollToSection = (id) => {
+  const section = document.getElementById(id)
+  if (section) {
+    section.scrollIntoView({ behavior: 'smooth' })
+  }
+}
+
+const closeMenu = () => {
+  isOpen.value = false
+}
 </script>
 
 <style scoped>
-@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap');
 
 .hero {
   position: relative;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
   align-items: center;
   min-height: 100vh;
-  background: radial-gradient(circle at center, #0d0d0d 0%, #000 100%);
   overflow: hidden;
   color: #e0ffe6;
   font-family: 'Orbitron', sans-serif;
   padding: 2rem;
   text-align: center;
+  background: #000;
 }
 
+/* Navbar */
+.navbar {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: transparent;
+  padding: 1rem 2rem;
+  z-index: 10;
+  position: relative;
+}
+
+.logo {
+  font-size: 1.4rem;
+  color: #00fff7;
+  text-shadow: 0 0 10px #00ffae;
+  font-weight: bold;
+}
+
+nav {
+  transition: max-height 0.3s ease;
+}
+
+nav ul {
+  display: flex;
+  gap: 2rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+nav ul li a {
+  color: #7fff00;
+  font-weight: 500;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+nav ul li a:hover {
+  color: #00fff7;
+}
+
+/* Hambúrguer */
+.hamburger {
+  display: none;
+  background: none;
+  border: none;
+  color: #7fff00;
+  cursor: pointer;
+}
+
+.icon {
+  width: 2rem;
+  height: 2rem;
+}
+
+/* Fundo de estrelas */
 .stars {
   position: absolute;
   width: 200%;
@@ -50,13 +136,19 @@ const verProjetos = () => {
 }
 
 @keyframes moveStars {
-  from { transform: translate(0, 0); }
-  to { transform: translate(-50%, -50%); }
+  from {
+    transform: translate(0, 0);
+  }
+  to {
+    transform: translate(-50%, -50%);
+  }
 }
 
+/* Conteúdo */
 .container {
   max-width: 700px;
   z-index: 1;
+  margin-top: 3rem;
 }
 
 h1 {
@@ -104,7 +196,43 @@ button:hover {
   transform: scale(1.05);
 }
 
-@media (max-width: 600px) {
+/* Responsivo */
+@media (max-width: 768px) {
+  .hamburger {
+    display: block;
+  }
+
+  nav {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    max-height: 0;
+    overflow: hidden;
+    background: rgba(0, 0, 0, 0.9);
+    border-radius: 10px;
+    transition: max-height 0.4s ease;
+  }
+
+  nav.open {
+    max-height: 300px;
+    padding: 1rem 0;
+  }
+
+  nav ul {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .navbar {
+    flex-direction: row;
+    align-items: center;
+  }
+
+  .container {
+    margin-top: 4rem;
+  }
+
   h1 {
     font-size: 2rem;
   }
