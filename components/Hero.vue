@@ -10,13 +10,13 @@
         </svg>
       </button>
       <nav :class="{ open: isOpen }">
-        <ul>
-          <li><a href="#about" @click="closeMenu">Sobre</a></li>
-          <li><a href="#projects" @click="closeMenu">Projetos</a></li>
-          <li><a href="#skills" @click="closeMenu">Habilidades</a></li>
-          <li><a href="#contact" @click="closeMenu">Contato</a></li>
-        </ul>
-      </nav>
+  <ul>
+    <li><NuxtLink to="/">HOME</NuxtLink></li>
+    <li><NuxtLink to="/projects">PORTFÓLIO</NuxtLink></li>
+    <li><NuxtLink to="/formation">FORMAÇÃO</NuxtLink></li>
+    <li><NuxtLink to="/about">SOBRE MIM</NuxtLink></li>
+  </ul>
+</nav>
     </header>
 
     <!-- Estrelas de fundo -->
@@ -26,7 +26,9 @@
     <div class="container">
       <h1>Olá, sou <span class="highlight">Davi Rocha</span></h1>
       <h2>Desenvolvedor Front-End com estilo alienígena futurista</h2>
-      <p>Transformo ideias em experiências digitais intuitivas e impactantes. Meu trabalho é focado na criação de interfaces modernas, acessíveis e alinhadas às necessidades dos usuários. Busco sempre a inovação e a eficiência, garantindo que cada projeto seja visualmente atraente e de alto desempenho.
+      <p>Transformo ideias em experiências digitais intuitivas e impactantes. Meu trabalho é focado na criação de 
+        interfaces modernas, acessíveis e alinhadas às necessidades dos usuários. Busco sempre a inovação e a eficiência, garantindo 
+        que cada projeto seja visualmente atraente e de alto desempenho.
 Explore meus projetos e descubra como posso agregar valor ao seu próximo desafio digital.
 </p>
       <button @click="scrollToSection('projects')">Ver Projetos</button>
@@ -65,7 +67,7 @@ const closeMenu = () => {
   font-family: 'Orbitron', sans-serif;
   padding: 2rem;
   text-align: center;
-  background: #000;
+  
 }
 
 /* Navbar */
@@ -122,26 +124,6 @@ nav ul li a:hover {
 .icon {
   width: 2rem;
   height: 2rem;
-}
-
-/* Fundo de estrelas */
-.stars {
-  position: absolute;
-  width: 200%;
-  height: 200%;
-  background: transparent url('https://www.transparenttextures.com/patterns/stardust.png') repeat;
-  animation: moveStars 120s linear infinite;
-  opacity: 0.2;
-  z-index: 0;
-}
-
-@keyframes moveStars {
-  from {
-    transform: translate(0, 0);
-  }
-  to {
-    transform: translate(-50%, -50%);
-  }
 }
 
 /* Conteúdo */

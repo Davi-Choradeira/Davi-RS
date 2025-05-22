@@ -30,7 +30,6 @@ onMounted(() => {
   color: #caffee;
   font-family: 'Orbitron', sans-serif;
   position: relative;
-  background: rgba(0, 0, 0, 0.3);
   border: 1px solid rgba(0, 255, 204, 0.2);
   border-radius: 20px;
   backdrop-filter: blur(8px);
