@@ -1,6 +1,4 @@
 <script setup>
-
-import Hero from '@/components/Hero.vue'
 import About from '@/components/About.vue'
 import Project from '@/components/Project.vue'
 import Skill from '@/components/Skill.vue'
