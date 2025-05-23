@@ -1,16 +1,33 @@
 <template>
-  <div class="global-background">
-    <canvas id="starsCanvas"></canvas>
-  </div>
-  <div class="page-content">
-    <NuxtPage />
+  <div>
+    <div class="global-background">
+      <canvas id="starsCanvas"></canvas>
+    </div>
+
+    <div class="page-content">
+      <NuxtPage />
+    </div>
+
+    <!-- Scroll to Top Button -->
+    <button v-if="showScrollTop" class="scroll-top" @click="scrollToTop">
+      👽
+    </button>
   </div>
 </template>
 
 <script>
 export default {
+  data() {
+    return {
+      showScrollTop: false,
+    };
+  },
   mounted() {
     this.initParticles();
+    window.addEventListener("scroll", this.handleScroll);
+  },
+  beforeUnmount() {
+    window.removeEventListener("scroll", this.handleScroll);
   },
   methods: {
     initParticles() {
@@ -27,7 +44,7 @@ export default {
         speed: Math.random() * 0.5 + 0.1,
       }));
 
-      function animate() {
+      const animate = () => {
         ctx.clearRect(0, 0, canvas.width, canvas.height);
 
         stars.forEach((star) => {
@@ -44,9 +61,18 @@ export default {
         });
 
         requestAnimationFrame(animate);
-      }
+      };
 
       animate();
+    },
+    handleScroll() {
+      this.showScrollTop = window.scrollY > 200;
+    },
+    scrollToTop() {
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth",
+      });
     },
   },
 };
@@ -72,5 +98,27 @@ export default {
   z-index: 1;
   color: white;
   padding: 20px;
+}
+
+/* Scroll Top Button */
+.scroll-top {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  background: linear-gradient(135deg, #00fff7, #7fff00);
+  color: black;
+  border: none;
+  padding: 0.8rem 1rem;
+  font-size: 1.5rem;
+  border-radius: 50%;
+  cursor: pointer;
+  z-index: 999;
+  box-shadow: 0 0 12px #7fff00;
+  transition: all 0.3s ease;
+}
+
+.scroll-top:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 20px #00fff7;
 }
 </style>
