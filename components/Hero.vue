@@ -1,56 +1,66 @@
 <template>
   <section class="hero">
     <!-- Navbar -->
-    <header class="navbar">
-      <div class="logo">DAVI </div>
-      <button class="hamburger" @click="isOpen = !isOpen">
-        <svg xmlns="http://www.w3.org/2000/svg" class="icon" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+    <header class="navbar" :class="{ 'hidden-navbar': isNavbarHidden }">
+      <div class="logo">DAVI</div>
+      <button class="hamburger" @click="isOpen = !isOpen" aria-label="Menu">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon" viewBox="0 0 24 24" stroke="currentColor" fill="none">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
             d="M4 6h16M4 12h16M4 18h16" />
         </svg>
       </button>
       <nav :class="{ open: isOpen }">
-  <ul>
-    <li><NuxtLink to="/">HOME</NuxtLink></li>
-    <li><NuxtLink to="/projects">PORTFÓLIO</NuxtLink></li>
-    <li><NuxtLink to="/formation">FORMAÇÃO</NuxtLink></li>
-    <li><NuxtLink to="/about">SOBRE MIM</NuxtLink></li>
-  </ul>
-</nav>
+        <ul>
+          <li><NuxtLink to="/projects">PORTFÓLIO</NuxtLink></li>
+          <li><NuxtLink to="/formation">FORMAÇÃO</NuxtLink></li>
+          <li><NuxtLink to="/about">SOBRE MIM</NuxtLink></li>
+        </ul>
+      </nav>
     </header>
 
     <!-- Estrelas de fundo -->
     <div class="stars"></div>
 
-    <!-- Conteúdo do Hero -->
-    <div class="container">
+    <!-- Conteúdo principal -->
+    <div class="container animate-hero">
       <h1>Olá, sou <span class="highlight">Davi Rocha</span></h1>
-      <h2>Desenvolvedor Front-End com estilo alienígena futurista</h2>
-      <p>Transformo ideias em experiências digitais intuitivas e impactantes. Meu trabalho é focado na criação de 
-        interfaces modernas, acessíveis e alinhadas às necessidades dos usuários. Busco sempre a inovação e a eficiência, garantindo 
-        que cada projeto seja visualmente atraente e de alto desempenho.
-Explore meus projetos e descubra como posso agregar valor ao seu próximo desafio digital.
-</p>
+      <div class="photo-placeholder"></div>
+      <h3>Desenvolvedor Web</h3>
+      <h2>JavaScript / React / Vue</h2>
       <button @click="scrollToSection('projects')">Ver Projetos</button>
     </div>
   </section>
 </template>
 
 <script setup>
-import { ref } from 'vue'
+import { ref, onMounted, onUnmounted } from 'vue'
 
 const isOpen = ref(false)
+const isNavbarHidden = ref(false)
+let lastScroll = 0
 
 const scrollToSection = (id) => {
   const section = document.getElementById(id)
-  if (section) {
-    section.scrollIntoView({ behavior: 'smooth' })
-  }
+  if (section) section.scrollIntoView({ behavior: 'smooth' })
 }
 
-const closeMenu = () => {
-  isOpen.value = false
+const handleScroll = () => {
+  const current = window.scrollY
+  if (current > lastScroll && current > 80) {
+    isNavbarHidden.value = true
+  } else {
+    isNavbarHidden.value = false
+  }
+  lastScroll = current
 }
+
+onMounted(() => {
+  window.addEventListener('scroll', handleScroll)
+})
+
+onUnmounted(() => {
+  window.removeEventListener('scroll', handleScroll)
+})
 </script>
 
 <style scoped>
@@ -61,58 +71,58 @@ const closeMenu = () => {
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: flex-start;
   min-height: 100vh;
+  background: transparent;
   overflow: hidden;
-  color: #e0ffe6;
   font-family: 'Orbitron', sans-serif;
-  padding: 2rem;
+  color: #e0ffe6;
+  padding: 2rem 1.5rem;
   text-align: center;
-  
 }
 
-/* Navbar */
 .navbar {
-  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 91%;
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  background: transparent;
+  justify-content: space-between;
   padding: 1rem 2rem;
-  z-index: 10;
-  position: relative;
+  background: rgba(0, 0, 0, 0.8);
+  z-index: 200;
+  transition: transform 0.3s ease-in-out;
+}
+
+.hidden-navbar {
+  transform: translateY(-100%);
 }
 
 .logo {
-  font-size: 1.4rem;
+  font-size: 1.6rem;
+  font-weight: bold;
   color: #00fff7;
   text-shadow: 0 0 10px #00ffae;
-  font-weight: bold;
-}
-
-nav {
-  transition: max-height 0.3s ease;
 }
 
 nav ul {
   display: flex;
   gap: 2rem;
   list-style: none;
-  margin: 0;
-  padding: 0;
 }
 
 nav ul li a {
   color: #7fff00;
-  font-weight: 500;
   text-decoration: none;
-  transition: color 0.3s ease;
+  font-weight: 500;
+  transition: color 0.3s;
 }
 
 nav ul li a:hover {
   color: #00fff7;
 }
 
-/* Hambúrguer */
 .hamburger {
   display: none;
   background: none;
@@ -126,18 +136,54 @@ nav ul li a:hover {
   height: 2rem;
 }
 
-/* Conteúdo */
 .container {
-  max-width: 700px;
+  max-width: 800px;
   z-index: 1;
-  margin-top: 3rem;
+  margin-top: 6rem;
+}
+
+/* Animação de entrada no Hero */
+.animate-hero {
+  animation: fadeInUp 1.2s ease-out;
+}
+
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Placeholder circular para foto */
+.photo-placeholder {
+  width: 140px;
+  height: 140px;
+  border: 3px dashed #7fff00;
+  border-radius: 50%;
+  margin: 1rem auto 2rem;
+  box-shadow: 0 0 10px #00fff7;
 }
 
 h1 {
-  font-weight: 600;
-  font-size: 2.8rem;
-  margin-bottom: 1rem;
+  font-size: 3rem;
   color: #00fff7;
+  margin-bottom: 1rem;
+}
+
+h3 {
+  font-size: 2.4rem;
+  color: #fbfbfb;
+  margin-bottom: 1rem;
+}
+
+h2 {
+  font-size: 1.5rem;
+  color: #9efff3;
+  margin-bottom: 2rem;
 }
 
 .highlight {
@@ -145,26 +191,11 @@ h1 {
   text-shadow: 0 0 8px #7fff00;
 }
 
-h2 {
-  font-weight: 400;
-  font-size: 1.6rem;
-  margin-bottom: 1.2rem;
-  color: #9efff3;
-}
-
-p {
-  font-weight: 300;
-  font-size: 1.1rem;
-  margin-bottom: 2rem;
-  line-height: 1.6;
-  color: #d8ffe8;
-}
-
 button {
   background: linear-gradient(135deg, #00fff7, #7fff00);
   border: none;
   border-radius: 50px;
-  padding: 0.9rem 2.8rem;
+  padding: 1rem 3rem;
   font-weight: 600;
   font-size: 1.1rem;
   color: #000;
@@ -174,8 +205,19 @@ button {
 }
 
 button:hover {
-  box-shadow: 0 0 25px rgba(127, 255, 0, 0.9);
   transform: scale(1.05);
+  box-shadow: 0 0 25px rgba(127, 255, 0, 0.9);
+}
+
+.stars {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: url('/stars.png') repeat;
+  opacity: 0.1;
+  z-index: 0;
 }
 
 /* Responsivo */
@@ -191,7 +233,7 @@ button:hover {
     right: 0;
     max-height: 0;
     overflow: hidden;
-    background: rgba(0, 0, 0, 0.9);
+    background: rgba(0, 0, 0, 0.95);
     border-radius: 10px;
     transition: max-height 0.4s ease;
   }
@@ -206,25 +248,16 @@ button:hover {
     align-items: center;
   }
 
-  .navbar {
-    flex-direction: row;
-    align-items: center;
-  }
-
   .container {
-    margin-top: 4rem;
+    margin-top: 7rem;
   }
 
   h1 {
-    font-size: 2rem;
+    font-size: 2.2rem;
   }
 
   h2 {
-    font-size: 1.2rem;
-  }
-
-  p {
-    font-size: 1rem;
+    font-size: 1.3rem;
   }
 }
 </style>
