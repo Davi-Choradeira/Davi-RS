@@ -1,6 +1,6 @@
 <template>
   <section class="projects" id="projects">
-    <h2>🚀 Laboratório de Projetos Futuristas</h2>
+    <h2> Projetos </h2>
     <div class="project-grid">
       <div 
         class="project-card" 
@@ -15,15 +15,15 @@
             Tecnologia de ponta aplicada ao mundo digital.
           </p>
           <div class="buttons">
-            <button @click="viewProject(n)">🔍 Ver Detalhes</button>
-            <button class="external-link">🌐 Acessar</button>
+            <button @click="viewProject(n)"> Ver Detalhes</button>
+            <button class="external-link"> Acessar</button>
           </div>
         </div>
       </div>
     </div>
 
     <!-- Botão flutuante no canto superior direito -->
-    <button class="back-button" @click="goToHome">🏠 Voltar ao início</button>
+    <button class="back-button" @click="goToHome"> Voltar ao início</button>
   </section>
 </template>
 

@@ -1,29 +1,29 @@
 <template>
   <section class="formation" id="formation">
     <div class="container">
-      <h2>📚 Minha Formação</h2>
+      <h2> Minha Formação</h2>
       
       <div class="formation-details">
         <div class="formation-item">
-          <h3>💡 Primeiros Passos</h3>
+          <h3> Primeiros Passos</h3>
           <p>Aprendi <strong>HTML & CSS</strong>, criando meus primeiros layouts e interfaces responsivas.</p>
         </div>
         <div class="formation-item">
-          <h3>🚀 JavaScript</h3>
+          <h3> JavaScript</h3>
           <p>Dominei a linguagem, criando interatividade e soluções dinâmicas com lógica robusta.</p>
         </div>
         <div class="formation-item">
-          <h3>🔥 Vue & Nuxt</h3>
+          <h3> Vue & Nuxt</h3>
           <p>Explorei <strong>componentes reativos</strong>, estrutura modular e SSR com Nuxt.</p>
         </div>
         <div class="formation-item">
-          <h3>🌐 Back-End & APIs</h3>
+          <h3> Back-End & APIs</h3>
           <p>Integrei <strong>APIs modernas</strong> com segurança e performance usando Node.js.</p>
         </div>
       </div>
 
       <!-- Botão flutuante no canto superior direito -->
-      <button class="back-button" @click="goToHome">🏠 Voltar ao início</button>
+      <button class="back-button" @click="goToHome"> Voltar ao início</button>
     </div>
 
     <!-- Canvas das tecnologias flutuando -->

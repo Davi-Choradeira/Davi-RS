@@ -1,6 +1,6 @@
 <template>
   <section class="projects" id="projects">
-    <h2 data-aos="flip-up" data-aos-duration="1500">🧪 Central de Projetos Intergalácticos</h2>
+    <h2 data-aos="flip-up" data-aos-duration="1500"> Projetos </h2>
     <div class="project-grid">
       <div 
         class="project-holo" 

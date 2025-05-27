@@ -1,6 +1,6 @@
 <template>
   <footer class="footer">
-    <p data-aos="fade-up" data-aos-duration="1200">🛸 Criado por Davi Rocha - Laboratório Galáctico Z9</p>
+    <p data-aos="fade-up" data-aos-duration="1200"> Criado por Davi Rocha Santos</p>
     <p class="sistema" data-aos="fade-up" data-aos-delay="300">&copy; 2025 • Todos os direitos interplanetários reservados.</p>
     <div class="energy-bar"></div>
   </footer>

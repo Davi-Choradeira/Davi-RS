@@ -1,6 +1,6 @@
 <template>
   <section class="about" id="about" data-aos="fade-left" data-aos-duration="1500">
-    <h2 data-aos="fade-up" data-aos-delay="300">🛸 Quem é Davi Rocha?</h2>
+    <h2 data-aos="fade-up" data-aos-delay="300"> Quem é Davi Rocha?</h2>
     <p data-aos="fade-up" data-aos-delay="600">
       Olá, terráqueo! Me chamo Davi Rocha — um ex-professor que decidiu explorar uma nova galáxia: o desenvolvimento web.
       Minha jornada começou em salas de aula, mas foi entre linhas de código e constelações de criatividade que encontrei
