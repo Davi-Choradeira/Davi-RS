@@ -1,50 +1,20 @@
 <template>
   <div class="main-container">
-    <!-- SEÇÃO SOBRE MIM -->
     <section class="about-me full-screen-section" id="about">
-      <div class="card animated">
-        <h2>Quem é Davi Rocha?</h2>
-        <p>
-          Me chamo <strong>Davi Rocha</strong>. Sou professor por formação e hoje estou em transição para o mundo do <strong>desenvolvimento web</strong>.
-          Minha paixão por tecnologia me impulsiona a estudar com profundidade, buscando unir design, interatividade e propósito em cada linha de código.
+      <div class="content-container">
+        <div class="photo-frame photo-large">
+          <div class="photo-placeholder">Sua Foto</div>
+        </div>
+
+        <p class="fade-in highlight-text">
+          Sou <span class="keyword">Davi Rocha Santos </span>, nascido em <span class="keyword">1993</span> na cidade de <span class="keyword">Campinas-SP</span>.
+          Iniciei minha jornada profissional como <span class="keyword">professor</span>, e foram anos dedicados a ensinar, aprender e evoluir com meus alunos.  
+          Mas em algum momento, uma <span class="highlight">nova paixão</span> começou a brilhar: <span class="highlight">a tecnologia</span>.  
+          A possibilidade de transformar a educação por meio do <span class="keyword">desenvolvimento web</span> despertou em mim o desejo de ir além.
+          Com coragem, mergulhei em linguagens como <span class="code">JavaScript</span>,e frameworks como <span class="code">Vue</span>, <span class="code">Nuxt</span>  e <span class="code">React</span>, me reinventando como <span class="highlight">programador</span> e criador digital.
+          Hoje, trago a paciência do educador e a curiosidade de um <span class="keyword">explorador digital</span>, buscando criar experiências que conectem <span class="keyword">tecnologia</span>, <span class="keyword">educação</span> e <span class="highlight">inspiração</span>.
+          Em <span class="keyword">Campinas</span>, um polo tecnológico, sigo evoluindo com propósito: usar o <span class="highlight">código</span> para transformar vidas, tal como a sala de aula sempre fez comigo.
         </p>
-        <p>
-          Com ferramentas como <strong>HTML</strong>, <strong>CSS</strong>, <strong>JavaScript</strong>, <strong>Vue</strong> e <strong>Nuxt</strong>,
-          transformo ideias em experiências digitais criativas e funcionais. Estou só começando minha jornada como <strong>frontend developer</strong>,
-          e já sinto que estou no caminho certo rumo às estrelas.
-        </p>
-      </div>
-    </section>
-
-    <!-- SEÇÃO CONTATO -->
-    <section class="contact full-screen-section">
-      <div class="card animated">
-        <h2>Fale Comigo</h2>
-        <form @submit.prevent="submitForm">
-          <div class="input-group">
-            <input type="text" id="name" v-model="formData.name" placeholder="Nome completo" required />
-          </div>
-
-          <div class="input-group">
-            <input type="email" id="email" v-model="formData.email" placeholder="Seu e-mail" required />
-          </div>
-
-          <div class="input-group">
-            <textarea id="message" v-model="formData.message" rows="6" placeholder="Escreva sua mensagem aqui..." required></textarea>
-          </div>
-
-          <!-- Validador anti robô -->
-          <div class="input-group">
-            <input
-              type="text"
-              v-model="formData.humanCheck"
-              placeholder="Quanto é 3 + 2?"
-              required
-            />
-          </div>
-
-          <button type="submit">Enviar Mensagem</button>
-        </form>
       </div>
     </section>
 
@@ -53,48 +23,23 @@
 </template>
 
 <script setup>
-import { reactive } from 'vue';
 import { useRouter } from 'vue-router';
 
 const router = useRouter();
-
 const goToHome = () => {
   router.push('/');
-};
-
-const formData = reactive({
-  name: '',
-  email: '',
-  message: '',
-  humanCheck: ''
-});
-
-const submitForm = () => {
-  if (formData.humanCheck.trim() !== '5') {
-    alert('Por favor, confirme que você não é um robô.');
-    return;
-  }
-
-  console.log('Formulário enviado:', formData);
-  alert('Mensagem enviada com sucesso!');
-
-  // Limpar o formulário após envio
-  formData.name = '';
-  formData.email = '';
-  formData.message = '';
-  formData.humanCheck = '';
 };
 </script>
 
 <style scoped>
-@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&display=swap');
 
 body, html {
   margin: 0;
   padding: 0;
-  background: linear-gradient(180deg, #0d0d0d, #1a1a1a);
   font-family: 'Orbitron', sans-serif;
   color: white;
+  background: linear-gradient(180deg, #0d0d0d, #1a1a1a);
   overflow-x: hidden;
 }
 
@@ -109,113 +54,103 @@ body, html {
   justify-content: center;
   align-items: center;
   padding: 3rem 1rem;
-  position: relative;
-  background-size: cover;
-  background-position: center;
-  background-attachment: fixed;
-}
-
-.about-me {
   background-image: radial-gradient(circle, rgba(0,255,204,0.05), transparent 70%);
 }
 
-.contact {
-  background-image: radial-gradient(circle, rgba(127,255,0,0.05), transparent 70%);
-}
-
-.card {
-  background: rgba(0, 255, 204, 0.1);
-  padding: 2.5rem;
-  border-radius: 18px;
-  border: 2px solid #00fff7;
-  box-shadow: 0 0 25px rgba(0, 255, 204, 0.4);
-  max-width: 800px;
-  width: 100%;
-  text-align: center;
-  animation: fadeIn 1s ease forwards;
-}
-
-.card h2 {
-  font-size: 2.4rem;
-  color: #7fff00;
-  margin-bottom: 1.5rem;
-  text-shadow: 0 0 12px #00ffae;
-}
-
-.card p {
-  font-size: 1.2rem;
-  line-height: 1.7;
-  margin-bottom: 1rem;
-  text-align: justify;
-}
-
-form {
+.content-container {
   display: flex;
   flex-direction: column;
-  gap: 1.2rem;
-}
-
-.input-group {
-  text-align: left;
-}
-
-input, textarea {
-  width: 100%;
-  padding: 14px;
-  border-radius: 10px;
+  align-items: center;
+  max-width: 900px;
+  gap: 2.5rem;
+  text-align: justify;
+  position: relative;
+  background: rgba(0, 255, 204, 0.05);
+  padding: 2.5rem;
+  border-radius: 20px;
   border: 2px solid #00fff7;
-  background: rgba(255, 255, 255, 0.1);
-  color: white;
-  font-size: 1.1rem;
+  box-shadow: 0 0 25px rgba(0, 255, 204, 0.3);
 }
 
-input::placeholder, textarea::placeholder {
-  color: #d2fff2cc;
-  font-style: italic;
+.photo-frame {
+  border: 4px solid #00fff7;
+  border-radius: 50%;
+  overflow: hidden;
+  box-shadow: 0 0 25px #00fff7;
+  background: #111;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-input:focus, textarea:focus {
-  border-color: #7fff00;
-  box-shadow: 0 0 15px rgba(127, 255, 0, 0.9);
-  outline: none;
+.photo-large {
+  width: 200px;
+  height: 200px;
 }
 
-textarea {
-  resize: none;
-}
-
-button {
-  padding: 14px;
-  background: linear-gradient(135deg, #00fff7, #7fff00);
-  border: none;
-  border-radius: 12px;
-  font-size: 1.3rem;
-  cursor: pointer;
-  transition: 0.3s ease;
-  color: black;
+.photo-placeholder {
+  color: #7fff00;
   font-weight: bold;
+  font-size: 1.2rem;
+  text-align: center;
 }
 
-button:hover {
-  transform: scale(1.05);
-  box-shadow: 0 0 20px rgba(127, 255, 0, 0.9);
+.highlight-text {
+  font-size: 1.4rem;
+  line-height: 2.4rem;
+  animation: fadeUp 1.2s ease forwards;
+  opacity: 0;
+  transform: translateY(40px);
 }
 
-.back-button {
-  position: fixed;
-  top: 20px;
-  right: 20px;
-  z-index: 10;
-}
-
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(60px);
-  }
+@keyframes fadeUp {
   to {
     opacity: 1;
     transform: translateY(0);
   }
+}
+
+/* Destaques */
+.keyword {
+  color: #00fff7;
+  font-weight: 600;
+}
+
+.highlight {
+  color: #7fff00;
+  font-weight: 700;
+  text-shadow: 0 0 6px #7fff00;
+}
+
+.code {
+  color: #ff00ff;
+  font-weight: 600;
+  background-color: rgba(255, 0, 255, 0.1);
+  padding: 0.1rem 0.3rem;
+  border-radius: 6px;
+  font-family: monospace;
+}
+
+/* Botão */
+.back-button {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  background: linear-gradient(135deg, #00fff7, #7fff00);
+  border: none;
+  border-radius: 12px;
+  padding: 10px 16px;
+  font-weight: bold;
+  font-size: 1rem;
+  color: black;
+  cursor: pointer;
+  box-shadow: 0 0 10px rgba(127, 255, 0, 0.7);
+  transition: transform 0.3s ease;
+}
+
+
+.back-button:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 15px rgba(127, 255, 0, 0.9);
 }
 </style>

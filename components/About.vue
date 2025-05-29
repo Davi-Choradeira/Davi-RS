@@ -1,25 +1,31 @@
 <template>
   <section class="about" id="about" data-aos="fade-left" data-aos-duration="1500">
-    <h2 data-aos="fade-up" data-aos-delay="300"> Davi Rocha</h2>
+    <h2 data-aos="fade-up" data-aos-delay="300">Davi Rocha</h2>
     
     <p data-aos="fade-up" data-aos-delay="600">
-      No passado, eu guiava mentes humanas entre teorias e quadros-negros. Hoje, navego por códigos, constelações de componentes e galáxias CSS. Me chamo <strong>Davi Rocha</strong> — um ex-professor em missão de transição para o universo do <strong>desenvolvimento web</strong>.
+      Ao longo da minha trajetória, transitei entre dois mundos complementares: a educação e a tecnologia. Inicialmente, minha atuação esteve voltada para a docência, 
+      onde desenvolvi habilidades de comunicação, ensino e adaptação. Com o avanço das ferramentas digitais, percebi que o <strong>desenvolvimento web</strong> 
+      poderia potencializar o aprendizado e oferecer soluções inovadoras para o ensino e a comunicação digital.
     </p>
 
     <p class="highlight" data-aos="fade-up" data-aos-delay="900">
-      Minha nave agora se move entre constelações de criatividade e planetas de performance. Em cada projeto, planto bandeiras de inovação, acessibilidade e responsividade. O frontend é meu novo planeta natal — onde lógica e design colidem em harmonia cósmica.
+      Atualmente, minha expertise concentra-se na <strong>engenharia frontend</strong>, criando interfaces que unem acessibilidade, performance e inovação. 
+      Domínio tecnologias como <strong>HTML, CSS, JavaScript, Vue e Nuxt</strong>, sempre buscando entregar soluções que equilibram estética e funcionalidade. 
+      Meu objetivo é transformar conceitos abstratos em experiências digitais intuitivas e eficazes.
     </p>
 
     <p data-aos="fade-up" data-aos-delay="1200">
-      Minha trajetória não foi uma queda: foi um lançamento. E se você está lendo esta mensagem, saiba que estou pronto para novas alianças. Missões freelance? Contratações interestelares? Cafés espaciais para trocar ideias? Me envie uma mensagem logo abaixo.
+      Minha transição profissional não foi um mero ajuste de carreira, mas uma <strong>redefinição estratégica</strong>, onde aplico a lógica do ensino à engenharia digital. 
+      Carrego comigo a visão analítica de um educador e a mentalidade exploratória de um desenvolvedor, buscando sempre aprendizado contínuo e excelência técnica.  
+      Se você busca inovação digital, colaboração estratégica ou soluções altamente eficazes, estou pronto para novas conexões.  
     </p>
 
     <form class="contact-form" @submit.prevent="handleSubmit" data-aos="fade-up" data-aos-delay="1500">
-      <h3> Envie sua mensagem </h3>
-      <input type="text" placeholder="Identificação civil (nome)" required />
-      <input type="email" placeholder="Canal de comunicação (email)" required />
-      <textarea placeholder="Mensagem codificada" rows="4" required></textarea>
-      <button type="submit"> Enviar</button>
+      <h3>Envie sua mensagem</h3>
+      <input type="text" placeholder="Nome" required />
+      <input type="email" placeholder="Email" required />
+      <textarea placeholder="Mensagem" rows="4" required></textarea>
+      <button type="submit">Enviar</button>
     </form>
   </section>
 </template>

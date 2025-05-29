@@ -146,6 +146,7 @@ button:hover {
   transition: transform 0.3s ease;
 }
 
+
 .back-button:hover {
   transform: scale(1.1);
   box-shadow: 0 0 15px rgba(127, 255, 0, 0.9);

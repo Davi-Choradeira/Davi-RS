@@ -27,21 +27,34 @@ onMounted(() => {
     once: true, // anima apenas uma vez ao entrar na tela
     offset: 80  // espaço antes da animação iniciar
   })
+
+  // Suaviza o efeito de rolagem
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+      e.preventDefault()
+      const target = document.querySelector(this.getAttribute('href'))
+      if (target) {
+        target.scrollIntoView({
+          behavior: 'smooth',
+          block: 'start'
+        })
+      }
+    })
+  })
 })
 
 const contacts = [
-  { label: 'Email', text: 'davi@email.com', url: 'mailto:davi@email.com' },
-  { label: 'LinkedIn', text: 'linkedin.com/in/davi', url: 'https://linkedin.com/in/davi' },
-  { label: 'GitHub', text: 'github.com/davi', url: 'https://github.com/davi' },
-  { label: 'Instagram', text: 'instagram.com/davi', url: 'https://instagram.com/davi' }
+  { label: 'Email', text: 'Davi@gmail.com', url: 'mailto:davirocha.dev@gmail.com' },
+  { label: 'LinkedIn', text: 'Davi RS', url: 'https://www.linkedin.com/in/davirs-developer' },
+  { label: 'GitHub', text: 'Developer', url: 'https://github.com/Davi-Choradeira' },
+  { label: 'Instagram', text: 'Choradeira', url: 'https://instagram.com/davi.choradeira' }
 ]
 </script>
-
 
 <style scoped>
 .contact {
   margin: 4rem auto;
-  max-width: 800px; /* aumentamos a largura geral */
+  max-width: 900px;
   padding: 0 1rem;
   color: #d1f0e6;
   text-align: center;
@@ -98,7 +111,7 @@ a:hover {
   color: #00ffae;
 }
 
-@media (max-width: 600px) {
+@media (max-width: 700px) {
   .contact-item {
     flex-direction: column;
     align-items: flex-start;

@@ -13,8 +13,7 @@
         <div class="holo-glow">
           <h3>Projeto #{{ n }}</h3>
           <p>
-            Sinal captado de um protótipo avançado criado no laboratório orbital de Davi Rocha. 
-            Tecnologia: desconhecida. Estilo: fora deste mundo.
+            COLOCAR Projetos
           </p>
         </div>
       </div>

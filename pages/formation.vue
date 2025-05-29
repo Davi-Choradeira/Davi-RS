@@ -104,7 +104,7 @@ onMounted(() => {
 
 /* Conteúdo centralizado */
 .container {
-  max-width: 850px;
+  max-width: 800px;
   text-align: center;
   z-index: 2;
   padding: 2rem;
