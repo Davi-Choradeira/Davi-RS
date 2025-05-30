@@ -7,14 +7,14 @@
         </div>
 
         <p class="fade-in highlight-text">
-          Sou <span class="keyword">Davi Rocha Santos </span>, nascido em <span class="keyword">1993</span> na cidade de <span class="keyword">Campinas-SP</span>.
-          Iniciei minha jornada profissional como <span class="keyword">professor</span>, e foram anos dedicados a ensinar, aprender e evoluir com meus alunos.  
-          Mas em algum momento, uma <span class="highlight">nova paixão</span> começou a brilhar: <span class="highlight">a tecnologia</span>.  
-          A possibilidade de transformar a educação por meio do <span class="keyword">desenvolvimento web</span> despertou em mim o desejo de ir além.
-          Com coragem, mergulhei em linguagens como <span class="code">JavaScript</span>,e frameworks como <span class="code">Vue</span>, <span class="code">Nuxt</span>  e <span class="code">React</span>, me reinventando como <span class="highlight">programador</span> e criador digital.
-          Hoje, trago a paciência do educador e a curiosidade de um <span class="keyword">explorador digital</span>, buscando criar experiências que conectem <span class="keyword">tecnologia</span>, <span class="keyword">educação</span> e <span class="highlight">inspiração</span>.
-          Em <span class="keyword">Campinas</span>, um polo tecnológico, sigo evoluindo com propósito: usar o <span class="highlight">código</span> para transformar vidas, tal como a sala de aula sempre fez comigo.
-        </p>
+    Sou <span class="keyword">Davi Rocha Santos</span>, nascido em <span class="keyword">1993</span> na cidade de <span class="keyword">Campinas-SP</span>.  
+    Iniciei minha jornada profissional como <span class="keyword">professor</span>, e foram anos dedicados a ensinar, aprender e evoluir com meus alunos.  
+    Mas em algum momento, uma <span class="highlight">nova paixão</span> começou a brilhar: <span class="highlight">a tecnologia</span>.  
+    A possibilidade de transformar a educação por meio do <span class="keyword">desenvolvimento web</span> despertou em mim o desejo de ir além.  
+    Com coragem, mergulhei em linguagens como <span class="code">JavaScript</span>, e frameworks como <span class="code">Vue</span>, <span class="code">Nuxt</span> e <span class="code">React</span>.  
+    Hoje, trago a paciência do educador e a curiosidade de um <span class="keyword">explorador digital</span>, buscando criar experiências que conectem <span class="keyword">tecnologia</span>, <span class="keyword">educação</span> e <span class="highlight">inspiração</span>.  
+    Em minha trajetória acadêmica e profissional, busco aliar <span class="highlight">código</span> e inovação para desenvolver soluções tecnológicas. A programação se tornou uma ferramenta essencial para promover aprendizado acessível e eficiente, ampliando horizontes e transformando realidades.  
+</p>
       </div>
     </section>
 
@@ -35,8 +35,8 @@ const goToHome = () => {
 @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&display=swap');
 
 body, html {
-  margin: 0;
-  padding: 0;
+  margin: 100;
+  padding: 100;
   font-family: 'Orbitron', sans-serif;
   color: white;
   background: linear-gradient(180deg, #0d0d0d, #1a1a1a);
@@ -49,7 +49,7 @@ body, html {
 }
 
 .full-screen-section {
-  min-height: 100vh;
+  min-height: 50vh;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -84,8 +84,8 @@ body, html {
 }
 
 .photo-large {
-  width: 200px;
-  height: 200px;
+  width: 300px;
+  height: 300px;
 }
 
 .photo-placeholder {

@@ -4,23 +4,19 @@
       <h2> Minha Formação</h2>
       
       <div class="formation-details">
-        <div class="formation-item">
-          <h3> Primeiros Passos</h3>
-          <p>Aprendi <strong>HTML & CSS</strong>, criando meus primeiros layouts e interfaces responsivas.</p>
-        </div>
-        <div class="formation-item">
-          <h3> JavaScript</h3>
-          <p>Dominei a linguagem, criando interatividade e soluções dinâmicas com lógica robusta.</p>
-        </div>
-        <div class="formation-item">
-          <h3> Vue & Nuxt</h3>
-          <p>Explorei <strong>componentes reativos</strong>, estrutura modular e SSR com Nuxt.</p>
-        </div>
-        <div class="formation-item">
-          <h3> Back-End & APIs</h3>
-          <p>Integrei <strong>APIs modernas</strong> com segurança e performance usando Node.js.</p>
-        </div>
-      </div>
+    <div class="formation-item">
+        <h3>Desenvolvedor Full Stack B7Web - Escola de ensino de programação</h3>
+        <p>Aprendi a desenvolver aplicações completas, trabalhando tanto no <strong>front-end</strong> (HTML, CSS, JavaScript, React) quanto no <strong>back-end</strong> (Node.js, Express, bancos de dados). Construção de APIs, autenticação e deploy também fizeram parte do aprendizado.</p>
+    </div>
+    <div class="formation-item">
+        <h3>React - Udemy cursos online</h3>
+        <p>Aprofundei meu conhecimento na criação de interfaces modernas e dinâmicas usando <strong>React</strong>, explorando componentes, estado, hooks e integração com APIs externas. Também aprendi sobre otimização e desenvolvimento escalável.</p>
+    </div>
+    <div class="formation-item">
+        <h3>Desenvolvimento Web - Udemy cursos online</h3>
+        <p>Entendi os fundamentos essenciais do desenvolvimento web, abrangendo <strong>HTML, CSS e JavaScript</strong>, além de frameworks populares como Bootstrap. Aprendi sobre responsividade, acessibilidade e boas práticas para construção de sites performáticos.</p>
+    </div>
+</div>
 
       <!-- Botão flutuante no canto superior direito -->
       <button class="back-button" @click="goToHome"> Voltar ao início</button>
@@ -92,9 +88,9 @@ onMounted(() => {
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 100vh;
+  min-height: 90vh;
   font-family: 'Orbitron', sans-serif;
-  color: #ccffee;
+  color: #ebeeed;
   text-align: center;
   background: transparent;
   backdrop-filter: blur(6px);
@@ -108,7 +104,7 @@ onMounted(() => {
   text-align: center;
   z-index: 2;
   padding: 2rem;
-  background-color: rgba(0, 0, 0, 0.15);
+  background-color: rgb(0, 0, 0);
   border-radius: 12px;
   border: 1px solid #00fff7;
   box-shadow: 0 0 20px rgba(0, 255, 204, 0.2);
@@ -119,7 +115,7 @@ onMounted(() => {
 h2 {
   font-size: 2.5rem;
   color: #7fff00;
-  text-shadow: 0 0 12px #00ffae;
+  text-shadow: 0 0 12px #000000;
   margin-bottom: 2rem;
 }
 
@@ -154,8 +150,8 @@ h2 {
 /* Canvas das tecnologias flutuantes */
 #techCanvas {
   position: fixed;
-  top: 0;
-  left: 0;
+  top: 1000;
+  left: 1000;
   z-index: 1;
   width: 100vw;
   height: 100vh;

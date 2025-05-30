@@ -27,7 +27,7 @@
       <div class="photo-placeholder"></div>
       <h3>Desenvolvedor Web</h3>
       <h2>JavaScript / React / Vue</h2>
-      <button @click="scrollToSection('projects')">Ver Projetos</button>
+      <button @click="scrollToSection('projects')">Projetos</button>
     </div>
   </section>
 </template>
