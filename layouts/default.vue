@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div :class="{ gelo: isGelo }">
     <div class="global-background">
       <canvas id="starsCanvas"></canvas>
     </div>
@@ -8,74 +8,78 @@
       <NuxtPage />
     </div>
 
-    <!-- Scroll to Top Button -->
     <button v-if="showScrollTop" class="scroll-top" @click="scrollToTop">
       👽
     </button>
   </div>
 </template>
 
-<script>
-export default {
-  data() {
-    return {
-      showScrollTop: false,
-    };
-  },
-  mounted() {
-    this.initParticles();
-    window.addEventListener("scroll", this.handleScroll);
-  },
-  beforeUnmount() {
-    window.removeEventListener("scroll", this.handleScroll);
-  },
-  methods: {
-    initParticles() {
-      const canvas = document.getElementById("starsCanvas");
-      const ctx = canvas.getContext("2d");
+<script setup>
+import { ref, onMounted, onUnmounted, provide } from 'vue'
 
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
+const showScrollTop = ref(false)
+const isGelo = ref(false)
 
-      const stars = Array.from({ length: 100 }, () => ({
-        x: Math.random() * canvas.width,
-        y: Math.random() * canvas.height,
-        radius: Math.random() * 2,
-        speed: Math.random() * 0.5 + 0.1,
-      }));
+provide('isGelo', isGelo)
+provide('toggleGelo', () => {
+  isGelo.value = !isGelo.value
+})
 
-      const animate = () => {
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
+const handleScroll = () => {
+  showScrollTop.value = window.scrollY > 200
+}
 
-        stars.forEach((star) => {
-          ctx.beginPath();
-          ctx.arc(star.x, star.y, star.radius, 0, Math.PI * 2);
-          ctx.fillStyle = "white";
-          ctx.fill();
-          star.y += star.speed;
+onMounted(() => {
+  initParticles()
+  window.addEventListener("scroll", handleScroll)
+})
 
-          if (star.y > canvas.height) {
-            star.y = 0;
-            star.x = Math.random() * canvas.width;
-          }
-        });
+onUnmounted(() => {
+  window.removeEventListener("scroll", handleScroll)
+})
 
-        requestAnimationFrame(animate);
-      };
+const scrollToTop = () => {
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth"
+  })
+}
 
-      animate();
-    },
-    handleScroll() {
-      this.showScrollTop = window.scrollY > 200;
-    },
-    scrollToTop() {
-      window.scrollTo({
-        top: 0,
-        behavior: "smooth",
-      });
-    },
-  },
-};
+const initParticles = () => {
+  const canvas = document.getElementById("starsCanvas")
+  const ctx = canvas.getContext("2d")
+
+  canvas.width = window.innerWidth
+  canvas.height = window.innerHeight
+
+  const stars = Array.from({ length: 100 }, () => ({
+    x: Math.random() * canvas.width,
+    y: Math.random() * canvas.height,
+    radius: Math.random() * 2,
+    speed: Math.random() * 0.5 + 0.1
+  }))
+
+  const animate = () => {
+    ctx.clearRect(0, 0, canvas.width, canvas.height)
+
+    stars.forEach((star) => {
+      ctx.beginPath()
+      ctx.arc(star.x, star.y, star.radius, 0, Math.PI * 2)
+      ctx.fillStyle = "white"
+      ctx.fill()
+      star.y += star.speed
+
+      if (star.y > canvas.height) {
+        star.y = 0
+        star.x = Math.random() * canvas.width
+      }
+    })
+
+    requestAnimationFrame(animate)
+  }
+
+  animate()
+}
 </script>
 
 <style scoped>
@@ -100,7 +104,6 @@ export default {
   padding: 20px;
 }
 
-/* Scroll Top Button */
 .scroll-top {
   position: fixed;
   bottom: 30px;
@@ -120,5 +123,23 @@ export default {
 .scroll-top:hover {
   transform: scale(1.1);
   box-shadow: 0 0 20px #00fff7;
+}
+</style>
+
+<!-- Estilo global para tema gelo -->
+<style>
+.gelo {
+  background-color: #434343 !important;
+  color: #1a1a1a !important;
+}
+
+.gelo .page-content {
+  color: #1a1a1a;
+}
+
+.gelo .scroll-top {
+  background: #454647;
+  color: #000;
+  box-shadow: 0 0 10px #000000;
 }
 </style>

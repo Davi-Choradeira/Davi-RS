@@ -18,8 +18,10 @@
       </nav>
     </header>
 
-    <!-- Estrelas de fundo -->
-    <div class="stars"></div>
+    <!-- Fundo com estrelas/neve e clique para inverter -->
+    <div class="background-layer" :class="{ invertido: inverted }" @click="toggleInversion">
+      <div class="stars"></div>
+    </div>
 
     <!-- Conteúdo principal -->
     <div class="container animate-hero">
@@ -37,6 +39,7 @@ import { ref, onMounted, onUnmounted } from 'vue'
 
 const isOpen = ref(false)
 const isNavbarHidden = ref(false)
+const inverted = ref(false)
 let lastScroll = 0
 
 const scrollToSection = (id) => {
@@ -52,6 +55,10 @@ const handleScroll = () => {
     isNavbarHidden.value = false
   }
   lastScroll = current
+}
+
+const toggleInversion = () => {
+  inverted.value = !inverted.value
 }
 
 onMounted(() => {
@@ -142,7 +149,6 @@ nav ul li a:hover {
   margin-top: 6rem;
 }
 
-/* Animação de entrada no Hero */
 .animate-hero {
   animation: fadeInUp 1.2s ease-out;
 }
@@ -158,7 +164,6 @@ nav ul li a:hover {
   }
 }
 
-/* Placeholder circular para foto */
 .photo-placeholder {
   width: 140px;
   height: 140px;
@@ -209,15 +214,33 @@ button:hover {
   box-shadow: 0 0 25px rgba(127, 255, 0, 0.9);
 }
 
-.stars {
+.background-layer {
   position: absolute;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
+  background: transparent;
+  z-index: 0;
+  transition: all 0.5s ease-in-out;
+  cursor: pointer;
+}
+
+.stars {
   background: url('/stars.png') repeat;
   opacity: 0.1;
-  z-index: 0;
+  width: 100%;
+  height: 100%;
+  transition: all 0.5s ease-in-out;
+}
+
+.background-layer.invertido {
+  background: #e0f7ff; /* branco gelo */
+}
+
+.background-layer.invertido .stars {
+  filter: invert(1) brightness(0.9); /* neve preta */
+  opacity: 0.2;
 }
 
 /* Responsivo */

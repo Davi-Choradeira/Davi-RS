@@ -3,5 +3,12 @@ export default defineNuxtConfig({
   devtools: { enabled: true },
   plugins: [
     '~/plugins/aos.client.js' // Adicionando AOS como plugin do lado do cliente
-  ]
-});
+  ],
+  app: {
+    head: {
+      link: [
+        { rel: "icon", type: "image/png", href: "/favicon.png" }
+      ]
+    }
+  }
+})
