@@ -2,7 +2,7 @@
   <section class="hero">
     <!-- Navbar -->
     <header class="navbar" :class="{ 'hidden-navbar': isNavbarHidden }">
-      <div class="logo">DAVI</div>
+      <div class="logo" @click="toggleGelo">DAVI</div>
       <button class="hamburger" @click="isOpen = !isOpen" aria-label="Menu">
         <svg xmlns="http://www.w3.org/2000/svg" class="icon" viewBox="0 0 24 24" stroke="currentColor" fill="none">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -18,8 +18,8 @@
       </nav>
     </header>
 
-    <!-- Fundo com estrelas/neve e clique para inverter -->
-    <div class="background-layer" :class="{ invertido: inverted }" @click="toggleInversion">
+    <!-- Fundo com estrelas/neve -->
+    <div class="background-layer" :class="{ invertido: isGelo }">
       <div class="stars"></div>
     </div>
 
@@ -35,12 +35,15 @@
 </template>
 
 <script setup>
-import { ref, onMounted, onUnmounted } from 'vue'
+import { ref, onMounted, onUnmounted, inject } from 'vue'
 
 const isOpen = ref(false)
 const isNavbarHidden = ref(false)
-const inverted = ref(false)
 let lastScroll = 0
+
+// Tema gelo (global)
+const isGelo = inject('isGelo')
+const toggleGelo = inject('toggleGelo')
 
 const scrollToSection = (id) => {
   const section = document.getElementById(id)
@@ -55,10 +58,6 @@ const handleScroll = () => {
     isNavbarHidden.value = false
   }
   lastScroll = current
-}
-
-const toggleInversion = () => {
-  inverted.value = !inverted.value
 }
 
 onMounted(() => {
@@ -91,8 +90,8 @@ onUnmounted(() => {
 .navbar {
   position: fixed;
   top: 0;
-  left: 0;
-  width: 91%;
+  left: 0px;
+  width: calc(100% - 50px);
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -107,10 +106,11 @@ onUnmounted(() => {
 }
 
 .logo {
-  font-size: 1.6rem;
+  font-size: 1.8rem;
   font-weight: bold;
   color: #00fff7;
   text-shadow: 0 0 10px #00ffae;
+  cursor: pointer;
 }
 
 nav ul {
@@ -122,7 +122,7 @@ nav ul {
 nav ul li a {
   color: #7fff00;
   text-decoration: none;
-  font-weight: 500;
+  font-weight: 600;
   transition: color 0.3s;
 }
 
@@ -223,7 +223,6 @@ button:hover {
   background: transparent;
   z-index: 0;
   transition: all 0.5s ease-in-out;
-  cursor: pointer;
 }
 
 .stars {
@@ -234,16 +233,13 @@ button:hover {
   transition: all 0.5s ease-in-out;
 }
 
-.background-layer.invertido {
-  background: #e0f7ff; /* branco gelo */
-}
+
 
 .background-layer.invertido .stars {
-  filter: invert(1) brightness(0.9); /* neve preta */
+  filter: invert(1) brightness(0.9);
   opacity: 0.2;
 }
 
-/* Responsivo */
 @media (max-width: 768px) {
   .hamburger {
     display: block;
@@ -256,13 +252,13 @@ button:hover {
     right: 0;
     max-height: 0;
     overflow: hidden;
-    background: rgba(0, 0, 0, 0.95);
+    background: rgb(0, 0, 0);
     border-radius: 10px;
     transition: max-height 0.4s ease;
   }
 
   nav.open {
-    max-height: 300px;
+    max-height: 400px;
     padding: 1rem 0;
   }
 

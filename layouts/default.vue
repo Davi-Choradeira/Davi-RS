@@ -39,10 +39,7 @@ onUnmounted(() => {
 })
 
 const scrollToTop = () => {
-  window.scrollTo({
-    top: 0,
-    behavior: "smooth"
-  })
+  window.scrollTo({ top: 0, behavior: "smooth" })
 }
 
 const initParticles = () => {
@@ -62,7 +59,7 @@ const initParticles = () => {
   const animate = () => {
     ctx.clearRect(0, 0, canvas.width, canvas.height)
 
-    stars.forEach((star) => {
+    stars.forEach(star => {
       ctx.beginPath()
       ctx.arc(star.x, star.y, star.radius, 0, Math.PI * 2)
       ctx.fillStyle = "white"
@@ -100,8 +97,8 @@ const initParticles = () => {
 .page-content {
   position: relative;
   z-index: 1;
-  color: white;
   padding: 20px;
+  min-height: 100vh;
 }
 
 .scroll-top {
@@ -126,19 +123,20 @@ const initParticles = () => {
 }
 </style>
 
-<!-- Estilo global para tema gelo -->
 <style>
+/* Estilo global para tema gelo */
 .gelo {
-  background-color: #434343 !important;
+  background-color: #738286 !important;
   color: #1a1a1a !important;
 }
 
 .gelo .page-content {
+  background-color: #69787d;
   color: #1a1a1a;
 }
 
 .gelo .scroll-top {
-  background: #454647;
+  background: #000000;
   color: #000;
   box-shadow: 0 0 10px #000000;
 }
