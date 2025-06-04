@@ -2,33 +2,71 @@
   <section class="projects" id="projects">
     <h2 data-aos="flip-up" data-aos-duration="1500"> Projetos </h2>
     <div class="project-grid">
-      <div 
+      <a 
         class="project-holo" 
-        v-for="n in 6" 
-        :key="n" 
+        v-for="(project, index) in projects" 
+        :key="index"
+        :href="project.link" 
+        target="_blank" 
+        rel="noopener noreferrer"
         data-aos="fade-right" 
-        :data-aos-delay="n * 200"
+        :data-aos-delay="(index + 1) * 200"
         data-aos-duration="1200"
+        style="text-decoration: none;"
       >
         <div class="holo-glow">
-          <h3>Projeto #{{ n }}</h3>
-          <p>
-            COLOCAR Projetos
-          </p>
+          <h3>{{ project.title }}</h3>
+          <p>{{ project.description }}</p>
         </div>
-      </div>
+      </a>
     </div>
   </section>
 </template>
 
 <script setup>
-import { onMounted } from 'vue';
+import { onMounted, ref } from 'vue';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 
 onMounted(() => {
   AOS.init();
 });
+
+const projects = ref([
+  {
+    title: 'Pokédex Vue',
+    description: 'Projeto de uma Pokédex feito com Vue.js, Vite e API de Pokémon.',
+    link: 'https://github.com/Davi-Choradeira/Pokedex-Vue',
+  },
+  {
+    title: 'Projeto 2',
+    description: 'falar do projeto ',
+    link: 'link ',
+  },
+    {
+    title: 'Projeto 3',
+    description: 'falar do projeto ',
+    link: 'link ',
+  },
+    {
+    title: 'Projeto 4',
+    description: 'falar do projeto ',
+    link: 'link ',
+  },
+    {
+    title: 'Projeto 5',
+    description: 'falar do projeto ',
+    link: 'link ',
+  },
+    {
+    title: 'Projeto 6',
+    description: 'falar do projeto ',
+    link: 'link ',
+  },
+
+  // Adicione mais projetos aqui, se quiser
+]);
+
 </script>
 
 <style scoped>

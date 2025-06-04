@@ -1,5 +1,5 @@
 <template>
-  <section class="contact">
+  <section class="contact" id="contato">
     <h2 data-aos="fade-up" data-aos-duration="1000">Contato</h2>
     <ul class="contact-list">
       <li 
@@ -21,16 +21,22 @@
 import { onMounted } from 'vue'
 import AOS from 'aos'
 import 'aos/dist/aos.css'
+import smoothscroll from 'smoothscroll-polyfill'
 
 onMounted(() => {
+  smoothscroll.polyfill()
+
   AOS.init({
-    once: true, // anima apenas uma vez ao entrar na tela
-    offset: 80  // espaço antes da animação iniciar
+    once: true,
+    offset: 80,
+    duration: 800,
+    easing: 'ease-in-out',
+    mirror: true // anima ao subir também
   })
 
-  // Suaviza o efeito de rolagem
+  // Smooth scroll para âncoras internas
   document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function(e) {
+    anchor.addEventListener('click', function (e) {
       e.preventDefault()
       const target = document.querySelector(this.getAttribute('href'))
       if (target) {
@@ -84,12 +90,13 @@ const contacts = [
   border: 1px solid rgba(0, 255, 204, 0.3);
   border-radius: 1rem;
   padding: 1.5rem 2rem;
-  transition: background 0.3s ease;
+  transition: background 0.3s ease, transform 0.3s ease;
   font-size: 1.1rem;
 }
 
 .contact-item:hover {
   background: rgba(0, 255, 204, 0.1);
+  transform: translateY(-4px);
 }
 
 .label {
