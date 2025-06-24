@@ -35,24 +35,25 @@ onMounted(() => {
 const projects = ref([
   {
     title: 'Pokédex Vue',
-    description: 'Projeto de uma Pokédex feito com Vue.js, Vite e API de Pokémon.',
+    description: 'Aplicação interativa que simula uma Pokédex, desenvolvida com Vue.js, Vite e a PokéAPI. Ideal para praticar requisições HTTP e componentes reativos.',
     link: 'https://github.com/Davi-Choradeira/Pokedex-Vue',
   },
   {
-    title: 'Projeto 2',
-    description: 'falar do projeto ',
-    link: 'link ',
+    title: 'Clock',
+    description: 'Relógio digital responsivo feito em JavaScript puro, com foco em manipulação de datas e horas em tempo real.',
+    link: 'https://github.com/Davi-Choradeira/Clock.git',
   },
-    {
-    title: 'Projeto 3',
-    description: 'falar do projeto ',
-    link: 'link ',
+  {
+    title: 'Pequeno Universo',
+    description: 'Experiência visual e interativa que explora conceitos espaciais com animações e design imersivo. Perfeito para mostrar criatividade e domínio de UI.',
+    link: 'https://github.com/Davi-Choradeira/Pequeno-Universo.git',
   },
-    {
-    title: 'Projeto 4',
-    description: 'falar do projeto ',
-    link: 'link ',
+  {
+    title: 'Masterchef',
+    description: 'Aplicação inspirada no universo gastronômico para cadastro e visualização de receitas. Desenvolvida com foco em componentes reutilizáveis e interatividade.',
+    link: 'https://github.com/Davi-Choradeira/Masterchef.git',
   },
+
     {
     title: 'Projeto 5',
     description: 'falar do projeto ',
