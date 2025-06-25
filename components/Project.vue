@@ -55,9 +55,10 @@ const projects = ref([
   },
 
     {
-    title: 'Projeto 5',
-    description: 'falar do projeto ',
-    link: 'link ',
+    title: 'Spotify',
+    description: 'Um clone do Spotify com interface inspirada no visual marcante do aplicativo original.',
+
+    link: 'https://github.com/Davi-Choradeira/S-p-o-t-i-f-y.git',
   },
     {
     title: 'Projeto 6',
