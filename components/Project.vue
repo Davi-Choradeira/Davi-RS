@@ -60,12 +60,11 @@ const projects = ref([
 
     link: 'https://github.com/Davi-Choradeira/S-p-o-t-i-f-y.git',
   },
-    {
-    title: 'Projeto 6',
-    description: 'falar do projeto ',
-    link: 'link ',
-  },
-
+  {
+  title: 'Epic-Forger',
+  description: 'Crie heróis místicos, forje poderes épicos e embarque em missões .',
+  link: 'https://github.com/Davi-Choradeira/-Epic-Forger.git',
+}
   // Adicione mais projetos aqui, se quiser
 ]);
 
