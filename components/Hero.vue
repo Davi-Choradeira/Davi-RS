@@ -5,8 +5,7 @@
       <div class="logo" @click="toggleGelo">DAVI</div>
       <button class="hamburger" @click="isOpen = !isOpen" aria-label="Menu">
         <svg xmlns="http://www.w3.org/2000/svg" class="icon" viewBox="0 0 24 24" stroke="currentColor" fill="none">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-            d="M4 6h16M4 12h16M4 18h16" />
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
         </svg>
       </button>
       <nav :class="{ open: isOpen }">
@@ -26,7 +25,13 @@
     <!-- Conteúdo principal -->
     <div class="container animate-hero">
       <h1>Olá, sou <span class="highlight">Davi Rocha</span></h1>
-      <div class="photo-placeholder"></div>
+
+      <div class="photo-glow">
+        <div class="glow-circle">
+          <img src="/assets/images/pixel-davi.png" alt="Foto em pixel do Davi" class="pixel-photo" />
+        </div>
+      </div>
+
       <h3>Desenvolvedor Web</h3>
       <h2>JavaScript / React / Vue</h2>
       <button @click="scrollToSection('projects')">Projetos</button>
@@ -41,7 +46,6 @@ const isOpen = ref(false)
 const isNavbarHidden = ref(false)
 let lastScroll = 0
 
-// Tema gelo (global)
 const isGelo = inject('isGelo')
 const toggleGelo = inject('toggleGelo')
 
@@ -52,11 +56,7 @@ const scrollToSection = (id) => {
 
 const handleScroll = () => {
   const current = window.scrollY
-  if (current > lastScroll && current > 80) {
-    isNavbarHidden.value = true
-  } else {
-    isNavbarHidden.value = false
-  }
+  isNavbarHidden.value = current > lastScroll && current > 80
   lastScroll = current
 }
 
@@ -90,8 +90,8 @@ onUnmounted(() => {
 .navbar {
   position: fixed;
   top: 0;
-  left: 0px;
-  width: calc(100% - 50px);
+  left: 0;
+  width: 100%;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -164,13 +164,47 @@ nav ul li a:hover {
   }
 }
 
-.photo-placeholder {
-  width: 140px;
-  height: 140px;
-  border: 3px dashed #7fff00;
-  border-radius: 50%;
+.photo-glow {
   margin: 1rem auto 2rem;
-  box-shadow: 0 0 10px #00fff7;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.glow-circle {
+  width: 190px;
+  height: 190px;
+  border-radius: 50%;
+  padding: 5px;
+  background: radial-gradient(circle, #00fff799, #00000000);
+  box-shadow:
+    0 0 25px #00fff7,
+    0 0 45px #00fff799,
+    0 0 65px #00fff733;
+  animation: pulse-glow 2s infinite ease-in-out;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@keyframes pulse-glow {
+  0% {
+    box-shadow: 0 0 25px #00fff7, 0 0 45px #00fff799, 0 0 65px #00fff733;
+  }
+  50% {
+    box-shadow: 0 0 35px #00fff7, 0 0 55px #00fff7aa, 0 0 75px #00fff744;
+  }
+  100% {
+    box-shadow: 0 0 25px #00fff7, 0 0 45px #00fff799, 0 0 65px #00fff733;
+  }
+}
+
+.pixel-photo {
+  width: 170px;
+  height: 170px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid #00fff7;
 }
 
 h1 {
@@ -232,8 +266,6 @@ button:hover {
   height: 100%;
   transition: all 0.5s ease-in-out;
 }
-
-
 
 .background-layer.invertido .stars {
   filter: invert(1) brightness(0.9);
