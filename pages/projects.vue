@@ -1,224 +1,183 @@
 <template>
-  <section class="about" id="about" data-aos="fade-left" data-aos-duration="1500">
-    <h2 data-aos="fade-up" data-aos-delay="300">Davi Rocha</h2>
+  <section class="projects" id="projects">
+    <div class="container">
+      <h2>Meus Projetos</h2>
 
-    <p data-aos="fade-up" data-aos-delay="600">
-      Ao longo da minha trajetória, transitei entre dois mundos complementares: a educação e a tecnologia...
-    </p>
-
-    <p class="highlight" data-aos="fade-up" data-aos-delay="900">
-      Atualmente, minha expertise concentra-se na <strong>engenharia frontend</strong>...
-    </p>
-
-    <p data-aos="fade-up" data-aos-delay="1200">
-      Minha transição profissional não foi um mero ajuste de carreira, mas uma <strong>redefinição estratégica</strong>...
-    </p>
-
-    <form class="contact-form" @submit.prevent="handleSubmit" data-aos="fade-up" data-aos-delay="1500">
-      <h3>Envie sua mensagem</h3>
-      <input type="text" placeholder="Nome" v-model="name" />
-      <input type="email" placeholder="Email" v-model="email" />
-      <textarea placeholder="Mensagem" rows="4" v-model="message" />
-      <button type="submit">Enviar</button>
-
-      <div v-if="feedback" :class="['form-feedback', feedbackType]">
-        {{ feedback }}
+      <div class="projects-grid">
+        <div v-for="(project, index) in projects" :key="index" class="project-card">
+          <h3>{{ project.title }}</h3>
+          <p>{{ project.description }}</p>
+          <a :href="project.link" target="_blank">Ver Projeto</a>
+        </div>
       </div>
-    </form>
+    </div>
+
+    <!-- Botão fixo para voltar à seção .hero na página principal -->
+    <NuxtLink to="/#inicio" class="back-button">Voltar ao Início</NuxtLink>
   </section>
 </template>
 
 <script setup>
-import { ref, onMounted } from 'vue'
-import AOS from 'aos'
-import 'aos/dist/aos.css'
+const projects = [
+  {
+    title: 'Galáxia Interativa',
+    description: 'Mapa interativo com estrelas, planetas e animações usando Vue e Canvas.',
+    link: '#'
+  },
+  {
+    title: 'Portfólio Alienígena',
+    description: 'Site pessoal com estética futurista e design animado.',
+    link: '#'
+  },
+  {
+    title: 'Buscador Espacial',
+    description: 'App com Leaflet que localiza lugares com marcadores neon e guia virtual.',
+    link: '#'
+  },
+  {
+    title: 'Formulário Antibot',
+    description: 'Formulário futurista com validação visual, icons e checagem de humano.',
+    link: '#'
+  },
+  {
+    title: 'Jogo da Nave',
+    description: 'Mini jogo interativo com HTML5 canvas e colisões animadas.',
+    link: '#'
+  },
+  {
+    title: 'Calculadora Espacial',
+    description: 'Calculadora com estilo galáctico e efeitos de digitação neon.',
+    link: '#'
+  },
+  {
+    title: 'Clima Cósmico',
+    description: 'App de clima com integração de API e visuais estelares.',
+    link: '#'
+  },
+  {
+    title: 'To-Do Planetário',
+    description: 'Lista de tarefas com design orbital e organização em planetas.',
+    link: '#'
+  },
+  {
+    title: 'NFT Viewer',
+    description: 'Visualizador de NFTs com galeria animada futurista.',
+    link: '#'
+  },
+  {
+    title: 'Explorador de APIs',
+    description: 'Projeto de estudo com múltiplas integrações de APIs públicas.',
+    link: '#'
+  },
+  {
+    title: 'Blog Estelar',
+    description: 'Blog com layout futurista, animações e markdown.',
+    link: '#'
+  },
+  {
+    title: 'Landing Page Quantum',
+    description: 'Página de marketing com UI alienígena e tipografia orbitron.',
+    link: '#'
+  },
 
-onMounted(() => {
-  AOS.init()
-})
 
-const name = ref('')
-const email = ref('')
-const message = ref('')
-const feedback = ref('')
-const feedbackType = ref('') // 'success' ou 'error'
-
-const validateEmail = (email) => {
-  const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
-  return regex.test(email)
-}
-
-const handleSubmit = () => {
-  if (!name.value || !email.value || !message.value) {
-    feedback.value = 'Preencha todos os campos.'
-    feedbackType.value = 'error'
-    return
-  }
-
-  if (!validateEmail(email.value)) {
-    feedback.value = 'Digite um email válido.'
-    feedbackType.value = 'error'
-    return
-  }
-
-  feedback.value = 'Mensagem enviada com sucesso!'
-  feedbackType.value = 'success'
-
-  name.value = ''
-  email.value = ''
-  message.value = ''
-
-  setTimeout(() => {
-    feedback.value = ''
-    feedbackType.value = ''
-  }, 4000)
-}
+]
 </script>
 
 <style scoped>
-@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap');
 
-.about {
-  max-width: 850px;
-  margin: 6rem auto;
-  padding: 2.5rem 1.5rem;
-  text-align: center;
-  color: #caffee;
+.projects {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
   font-family: 'Orbitron', sans-serif;
+  background: linear-gradient(135deg, #000000, #020d0f);
+  padding: 4rem 2rem;
+  color: #00fff7;
   position: relative;
-  border: 1px solid rgba(0, 255, 204, 0.2);
-  border-radius: 20px;
-  backdrop-filter: blur(10px);
-  box-shadow: 0 0 50px rgba(0, 255, 170, 0.15);
-  background: rgba(0, 20, 20, 0.3);
+  overflow: hidden;
+}
+
+.container {
+  max-width: 1200px;
+  text-align: center;
+  z-index: 2;
+  position: relative;
 }
 
 h2 {
-  font-size: 2.4rem;
-  font-weight: 600;
-  margin-bottom: 1.5rem;
+  font-size: 2.5rem;
+  margin-bottom: 2rem;
   color: #7fff00;
-  text-shadow: 0 0 10px #7fff00;
-  animation: pulseGlow 2s ease-in-out infinite;
+  text-shadow: 0 0 10px #00fff7;
 }
 
-h3 {
-  font-size: 1.4rem;
-  color: #00ffc8;
-  margin-bottom: 1rem;
-  text-shadow: 0 0 6px #00ffc8;
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.5rem;
 }
 
-p {
-  font-size: 1.15rem;
-  line-height: 1.8;
-  color: #d2fff2;
-  padding: 0 1rem;
-  margin-bottom: 1.5rem;
-}
-
-.highlight {
-  color: #00ffc8;
-  font-weight: 600;
+.project-card {
   background: rgba(0, 255, 204, 0.07);
-  border: 1px dashed rgba(0, 255, 204, 0.2);
+  border: 2px solid #00fff7;
   border-radius: 12px;
-  padding: 1rem;
-  margin: 2rem 0;
-  box-shadow: 0 0 18px rgba(0, 255, 204, 0.15);
+  padding: 1.5rem;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  backdrop-filter: blur(8px);
+  color: #ebeeed;
 }
 
-.contact-form {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-  margin-top: 2rem;
+.project-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 0 20px #00fff7;
 }
 
-.contact-form input,
-.contact-form textarea {
-  background: rgba(0, 0, 0, 0.6);
-  border: 1px solid #00ffc8;
-  color: #d2fff2;
-  padding: 0.85rem 1.2rem;
-  border-radius: 12px;
-  font-family: 'Orbitron', sans-serif;
-  font-size: 1rem;
-  resize: none;
+.project-card h3 {
+  font-size: 1.3rem;
+  color: #7fff00;
+  margin-bottom: 0.5rem;
 }
 
-.contact-form input::placeholder,
-.contact-form textarea::placeholder {
-  color: #99ffe0;
+.project-card p {
+  font-size: 0.95rem;
+  margin-bottom: 1rem;
 }
 
-.contact-form button {
-  background-color: #00ffc8;
-  color: #000;
+.project-card a {
+  color: #00fff7;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.project-card a:hover {
+  text-decoration: underline;
+}
+
+/* Botão fixo para voltar à seção .hero */
+.back-button {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  background: linear-gradient(135deg, #00fff7, #7fff00);
   border: none;
-  padding: 0.85rem;
-  font-weight: 700;
-  font-size: 1rem;
   border-radius: 12px;
-  cursor: pointer;
-  transition: background 0.3s, transform 0.2s;
-}
-
-.contact-form button:hover {
-  background-color: #00d4a4;
-  transform: scale(1.03);
-}
-
-.form-feedback {
-  margin-top: 1rem;
-  padding: 1rem;
-  border-radius: 12px;
+  padding: 10px 16px;
   font-weight: bold;
   font-size: 1rem;
-  animation: slideDown 0.4s ease-out;
-  text-align: center;
+  color: black;
+  cursor: pointer;
+  box-shadow: 0 0 10px rgba(0, 255, 204, 0.7);
+  transition: transform 0.3s ease;
+  z-index: 999;
+  text-decoration: none;
+  display: inline-block;
 }
 
-.form-feedback.success {
-  background-color: rgba(0, 255, 170, 0.2);
-  color: #00ffc8;
-  border: 1px solid #00ffc8;
-  box-shadow: 0 0 12px rgba(0, 255, 170, 0.3);
-}
-
-.form-feedback.error {
-  background-color: rgba(255, 0, 0, 0.1);
-  color: #ff4d4d;
-  border: 1px solid #ff4d4d;
-  box-shadow: 0 0 12px rgba(255, 0, 0, 0.2);
-}
-
-@keyframes slideDown {
-  from {
-    transform: translateY(-10px);
-    opacity: 0;
-  }
-  to {
-    transform: translateY(0);
-    opacity: 1;
-  }
-}
-
-@keyframes pulseGlow {
-  0%, 100% {
-    text-shadow: 0 0 10px #7fff00;
-  }
-  50% {
-    text-shadow: 0 0 25px #7fff00;
-  }
-}
-
-@media (max-width: 600px) {
-  h2 {
-    font-size: 1.7rem;
-  }
-  p {
-    font-size: 1rem;
-  }
+.back-button:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 15px rgba(0, 255, 204, 0.9);
 }
 </style>
