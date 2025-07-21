@@ -3,21 +3,15 @@
     <h2 data-aos="fade-up" data-aos-delay="300">Davi Rocha</h2>
 
     <p data-aos="fade-up" data-aos-delay="600">
-      Ao longo da minha trajetória, transitei entre dois mundos complementares: a educação e a tecnologia. Inicialmente, minha atuação esteve voltada para a docência,
-      onde desenvolvi habilidades de comunicação, ensino e adaptação. Com o avanço das ferramentas digitais, percebi que o <strong>desenvolvimento web</strong>
-      poderia potencializar o aprendizado e oferecer soluções inovadoras para o ensino e a comunicação digital.
+      Atuei inicialmente como professor, desenvolvendo habilidades em comunicação, didática e adaptabilidade. Ao perceber o potencial da tecnologia para transformar o aprendizado, iniciei uma transição estratégica para o <strong>desenvolvimento web</strong>, unindo educação e inovação digital.
     </p>
 
     <p class="highlight" data-aos="fade-up" data-aos-delay="900">
-      Atualmente, minha expertise concentra-se na <strong>engenharia frontend</strong>, criando interfaces que unem acessibilidade, performance e inovação.
-      Domínio tecnologias como <strong>HTML, CSS, JavaScript, Vue e Nuxt</strong>, sempre buscando entregar soluções que equilibram estética e funcionalidade.
-      Meu objetivo é transformar conceitos abstratos em experiências digitais intuitivas e eficazes.
+      Especializado em <strong>engenharia frontend</strong>, crio interfaces que priorizam acessibilidade, desempenho e experiência do usuário. Domino <strong>HTML, CSS, JavaScript, Vue e Nuxt</strong>, com foco na entrega de soluções esteticamente refinadas e tecnicamente eficientes.
     </p>
 
     <p data-aos="fade-up" data-aos-delay="1200">
-      Minha transição profissional não foi um mero ajuste de carreira, mas uma <strong>redefinição estratégica</strong>, onde aplico a lógica do ensino à engenharia digital.
-      Carrego comigo a visão analítica de um educador e a mentalidade exploratória de um desenvolvedor, buscando sempre aprendizado contínuo e excelência técnica.
-      Se você busca inovação digital, colaboração estratégica ou soluções altamente eficazes, estou pronto para novas conexões.
+      Minha formação pedagógica fortalece minha abordagem analítica e colaborativa no desenvolvimento. Busco evolução contínua, combinando visão estratégica com excelência técnica em cada projeto.
     </p>
 
     <form class="contact-form" @submit.prevent="handleSubmit" data-aos="fade-up" data-aos-delay="1500">
@@ -40,7 +34,7 @@ onMounted(() => {
 })
 
 const handleSubmit = () => {
-  alert('🛰️ Sinal enviado com sucesso! A resposta será decodificada em breve.')
+  alert('Mensagem enviada com sucesso! Retornarei em breve.')
 }
 </script>
 
@@ -76,14 +70,8 @@ const handleSubmit = () => {
 }
 
 @keyframes pulseAmbient {
-  0%, 100% {
-    transform: scale(1);
-    opacity: 0.15;
-  }
-  50% {
-    transform: scale(1.05);
-    opacity: 0.35;
-  }
+  0%, 100% { transform: scale(1); opacity: 0.15; }
+  50% { transform: scale(1.05); opacity: 0.35; }
 }
 
 h2 {
@@ -98,12 +86,8 @@ h2 {
 }
 
 @keyframes glowTitle {
-  0%, 100% {
-    text-shadow: 0 0 12px #00ffe1, 0 0 24px #00ffe1;
-  }
-  50% {
-    text-shadow: 0 0 22px #00ffae, 0 0 32px #00ffae;
-  }
+  0%, 100% { text-shadow: 0 0 12px #00ffe1, 0 0 24px #00ffe1; }
+  50% { text-shadow: 0 0 22px #00ffae, 0 0 32px #00ffae; }
 }
 
 h3 {
