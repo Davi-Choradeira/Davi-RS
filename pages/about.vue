@@ -3,37 +3,50 @@
     <div class="stars-bg"></div>
 
     <div class="bio-container">
-      <div class="bio-photo-frame">
-        <div class="photo-overlay">
-          <span class="label">Futuro Eu</span>
+      <!-- FOTO COM EFEITO -->
+      <div class="bio-photo-wrapper" data-aos="fade-right">
+        <div class="bio-photo-frame">
+          <img
+            src="/assets/images/DRS.jpg"
+            alt="Foto de Davi Rocha Santos"
+            class="bio-image"
+            data-aos="zoom-in"
+            data-aos-delay="200"
+          />
         </div>
       </div>
 
-      <div class="bio-text">
-        <h2 data-aos="fade-up"> Diário de bordo: quem sou eu</h2>
+      <div class="bio-text" data-aos="fade-left" data-aos-delay="400">
+        <h2 data-aos="fade-up">Diário de bordo: quem sou eu</h2>
 
         <p data-aos="fade-up" data-aos-delay="200">
-          Olá! Me chamo <span class="strong">Davi Rocha Santos</span>, nascido em <span class="strong">1993</span>, em <span class="strong">Campinas-SP</span>.
-          Iniciei minha jornada como professor, cultivando escuta, paciência e propósito.
+          Meu nome é <span class="strong">Davi Rocha Santos</span>, nascido em <span class="strong">1993</span> na cidade de <span class="strong">Campinas-SP</span>.
+          Iniciei minha trajetória profissional na área da educação, onde desenvolvi habilidades essenciais como escuta ativa, paciência e propósito.
         </p>
 
         <p data-aos="fade-up" data-aos-delay="400">
-          A curiosidade virou paixão — <span class="highlight">a tecnologia</span> passou a ser meu universo. Descobri nela uma ponte entre saber e sonho.
+          Com o tempo, a curiosidade se transformou em vocação: encontrei na <span class="highlight">tecnologia</span> um universo de possibilidades para inovar, construir e conectar.
         </p>
 
         <p data-aos="fade-up" data-aos-delay="600">
-          No <span class="highlight">desenvolvimento web</span> encontrei minha voz. Dominei ferramentas como <span class="code">JavaScript</span>, <span class="code">Vue</span>,
-          <span class="code">Nuxt</span> e <span class="code">React</span>, sempre com a missão de conectar ideias com experiências reais.
+          No <span class="highlight">desenvolvimento web</span>, descobri um novo caminho. Dominei ferramentas como <span class="code">JavaScript</span>, <span class="code">Vue</span>, <span class="code">Nuxt</span> e <span class="code">React</span>,
+          sempre com o objetivo de transformar ideias em experiências digitais impactantes.
         </p>
 
         <p data-aos="fade-up" data-aos-delay="800">
-          Hoje sou educador e explorador digital, criando soluções que tocam, ensinam e transformam. 
-          Cada projeto é um reflexo da minha jornada: funcional por fora, humano por dentro.
+          Hoje, atuo como educador e desenvolvedor frontend em constante evolução, buscando criar soluções funcionais, intuitivas e com significado humano. Cada projeto reflete minha jornada de transformação, aprendizado e propósito.
         </p>
       </div>
     </div>
 
-    <NuxtLink to="/#inicio" class="back-button">Voltar ao Início</NuxtLink>
+    <NuxtLink
+      to="/#inicio"
+      class="back-button"
+      data-aos="fade-in"
+      data-aos-delay="1000"
+    >
+      Voltar ao Início
+    </NuxtLink>
   </section>
 </template>
 
@@ -41,9 +54,15 @@
 import AOS from 'aos'
 import 'aos/dist/aos.css'
 
-onMounted(() => {
-  AOS.init({ duration: 1000 })
-})
+if (process.client) {
+  onMounted(() => {
+    AOS.init({ duration: 1000, once: true })
+  })
+
+  onUpdated(() => {
+    AOS.refresh()
+  })
+}
 </script>
 
 <style scoped>
@@ -90,37 +109,34 @@ onMounted(() => {
   z-index: 2;
 }
 
-.bio-photo-frame {
+.bio-photo-wrapper {
   flex: 1 1 400px;
   max-width: 420px;
-  height: 280px;
-  border-radius: 20px;
-  background: linear-gradient(135deg, #0f0f0f, #1a1a1a);
-  box-shadow: 0 0 20px rgba(0, 255, 204, 0.3);
   position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.bio-photo-frame {
+  width: 110%;
+  height: 320px;
+  border-radius: 24px;
+  background: linear-gradient(135deg, #0f0f0f, #1a1a1a);
+  box-shadow: 0 0 40px rgba(0, 255, 204, 0.35);
   overflow: hidden;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  transform: translateY(-20px);
+  z-index: 5;
 }
 
-.photo-overlay {
-  width: 95%;
-  height: 90%;
-  background: rgba(0,255,204,0.05);
-  border: 1px solid rgba(0,255,204,0.2);
-  border-radius: 16px;
-  box-shadow: inset 0 0 40px rgba(0,255,204,0.05);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.label {
-  color: #7fffd4;
-  font-weight: bold;
-  font-size: 1.2rem;
-  text-shadow: 0 0 10px #00ffe1;
+.bio-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 20px;
+  border: 1px solid rgba(0, 255, 204, 0.3);
+  box-shadow: 0 0 60px rgba(0, 255, 204, 0.15);
+  background: #0f0f0f;
 }
 
 .bio-text {
@@ -145,12 +161,6 @@ p {
   font-size: 1.15rem;
   line-height: 1.8;
   margin-bottom: 1.4rem;
-  animation: fadeLine 1s ease forwards;
-}
-
-@keyframes fadeLine {
-  from { opacity: 0; transform: translateY(20px); }
-  to { opacity: 1; transform: translateY(0); }
 }
 
 .strong {
@@ -203,6 +213,7 @@ p {
   .bio-photo-frame {
     width: 100%;
     height: 240px;
+    transform: translateY(0);
   }
 
   h2 {
