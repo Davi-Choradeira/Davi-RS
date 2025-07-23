@@ -2,7 +2,7 @@
   <section class="hero">
     <!-- Navbar -->
     <header class="navbar" :class="{ 'hidden-navbar': isNavbarHidden }">
-      <div class="logo" @click="toggleGelo">DAVI</div>
+      <div class="logo" @click="ativarFundoPreto">DAVI</div>
       <button class="hamburger" @click="isOpen = !isOpen" aria-label="Menu">
         <svg xmlns="http://www.w3.org/2000/svg" class="icon" viewBox="0 0 24 24" stroke="currentColor" fill="none">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
@@ -17,9 +17,9 @@
       </nav>
     </header>
 
-    <!-- Fundo com estrelas/neve -->
-    <div class="background-layer" :class="{ invertido: isGelo }">
-      <div class="stars"></div>
+    <!-- Fundo com estrelas ou preto -->
+    <div class="background-layer" :class="{ invertido: isGelo, fundoPreto: fundoPretoAtivo }">
+      <div class="stars" v-if="!fundoPretoAtivo"></div>
     </div>
 
     <!-- Conteúdo principal -->
@@ -48,6 +48,13 @@ let lastScroll = 0
 
 const isGelo = inject('isGelo')
 const toggleGelo = inject('toggleGelo')
+
+const fundoPretoAtivo = ref(false)
+
+const ativarFundoPreto = () => {
+  fundoPretoAtivo.value = true
+  isOpen.value = false
+}
 
 const scrollToSection = (id) => {
   const section = document.getElementById(id)
@@ -96,8 +103,8 @@ onUnmounted(() => {
   align-items: center;
   justify-content: space-between;
   padding: 1rem 2rem;
-  background: rgba(0, 0, 0, 0.8);
-  z-index: 200;
+  background: rgba(0, 0, 0, 0.85);
+  z-index: 1000;
   transition: transform 0.3s ease-in-out;
 }
 
@@ -145,8 +152,9 @@ nav ul li a:hover {
 
 .container {
   max-width: 800px;
-  z-index: 1;
-  margin-top: 6rem;
+  z-index: 10;
+  margin-top: 8rem;
+  padding: 1rem;
 }
 
 .animate-hero {
@@ -272,6 +280,10 @@ button:hover {
   opacity: 0.2;
 }
 
+.background-layer.fundoPreto {
+  background: black !important;
+}
+
 @media (max-width: 768px) {
   .hamburger {
     display: block;
@@ -301,6 +313,7 @@ button:hover {
 
   .container {
     margin-top: 7rem;
+    padding: 1rem;
   }
 
   h1 {
