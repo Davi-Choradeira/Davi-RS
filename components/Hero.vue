@@ -34,7 +34,7 @@
 
       <h3>Desenvolvedor Web</h3>
       <h2>JavaScript / React / Vue</h2>
-      <button @click="scrollToSection('projects')">Projetos</button>
+     
     </div>
   </section>
 </template>
@@ -238,18 +238,6 @@ h2 {
   text-shadow: 0 0 8px #7fff00;
 }
 
-button {
-  background: linear-gradient(135deg, #00fff7, #7fff00);
-  border: none;
-  border-radius: 50px;
-  padding: 1rem 3rem;
-  font-weight: 600;
-  font-size: 1.1rem;
-  color: #000;
-  cursor: pointer;
-  box-shadow: 0 0 15px rgba(0, 255, 200, 0.7);
-  transition: all 0.3s ease;
-}
 
 button:hover {
   transform: scale(1.05);

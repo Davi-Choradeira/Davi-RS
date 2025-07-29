@@ -8,14 +8,16 @@
       <NuxtPage />
     </div>
 
+    <!-- ✅ Botão com imagem circular no lugar do emoji -->
     <button v-if="showScrollTop" class="scroll-top" @click="scrollToTop">
-      👽
+      <img :src="scrollAlien" alt="Scroll to top" class="scroll-icon" />
     </button>
   </div>
 </template>
 
 <script setup>
 import { ref, onMounted, onUnmounted, provide } from 'vue'
+import scrollAlien from '../assets/images/alien.png' // ✅ Substituindo o emoji
 
 const showScrollTop = ref(false)
 const isGelo = ref(false)
@@ -101,20 +103,33 @@ const initParticles = () => {
   min-height: 100vh;
 }
 
+/* ✅ Botão com imagem circular estilizada */
 .scroll-top {
   position: fixed;
   bottom: 30px;
   right: 30px;
   background: linear-gradient(135deg, #00fff7, #7fff00);
-  color: black;
   border: none;
-  padding: 0.8rem 1rem;
-  font-size: 1.5rem;
   border-radius: 50%;
   cursor: pointer;
   z-index: 999;
   box-shadow: 0 0 12px #7fff00;
   transition: all 0.3s ease;
+  padding: 0.3rem;
+  width: 80px;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ✅ Estilo da imagem circular */
+.scroll-icon {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 2px solid #00fff7;
 }
 
 .scroll-top:hover {
@@ -124,7 +139,6 @@ const initParticles = () => {
 </style>
 
 <style>
-/* Estilo global para tema gelo */
 .gelo {
   background-color: #738286 !important;
   color: #1a1a1a !important;
@@ -137,7 +151,6 @@ const initParticles = () => {
 
 .gelo .scroll-top {
   background: #000000;
-  color: #000;
   box-shadow: 0 0 10px #000000;
 }
 </style>
