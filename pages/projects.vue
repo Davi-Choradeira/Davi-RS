@@ -20,29 +20,30 @@
 <script setup>
 const projects = [
   {
-    title: 'Galáxia Interativa',
-    description: 'Mapa interativo com estrelas, planetas e animações usando Vue e Canvas.',
-    link: '#'
+    title: 'Pokédex Vue',
+    description: 'Aplicação interativa que simula uma Pokédex, desenvolvida com Vue.js, Vite e a PokéAPI. Ideal para praticar requisições HTTP e componentes reativos.',
+    link: 'https://github.com/Davi-Choradeira/Pokedex-Vue'
   },
   {
-    title: 'Portfólio Alienígena',
-    description: 'Site pessoal com estética futurista e design animado.',
-    link: '#'
+    title: 'Clock',
+    description: 'Relógio digital responsivo feito em JavaScript puro, com foco em manipulação de datas e horas em tempo real.',
+    link: 'https://github.com/Davi-Choradeira/Clock.git'
   },
   {
-    title: 'Buscador Espacial',
-    description: 'App com Leaflet que localiza lugares com marcadores neon e guia virtual.',
-    link: '#'
+     title: 'Pequeno Universo',
+    description: 'Experiência visual e interativa que explora conceitos espaciais com animações e design imersivo. Perfeito para mostrar criatividade e domínio de UI.',
+    link: 'https://github.com/Davi-Choradeira/Pequeno-Universo.git'
   },
   {
-    title: 'Formulário Antibot',
-    description: 'Formulário futurista com validação visual, icons e checagem de humano.',
-    link: '#'
+    title: 'Masterchef',
+    description: 'Aplicação inspirada no universo gastronômico para cadastro e visualização de receitas. Desenvolvida com foco em componentes reutilizáveis e interatividade.',
+    link: 'https://github.com/Davi-Choradeira/Masterchef.git',
   },
   {
-    title: 'Jogo da Nave',
-    description: 'Mini jogo interativo com HTML5 canvas e colisões animadas.',
-    link: '#'
+   title: 'Spotify',
+    description: 'Um clone do Spotify com interface inspirada no visual marcante do aplicativo original.',
+
+    link: 'https://github.com/Davi-Choradeira/S-p-o-t-i-f-y.git',
   },
   {
     title: 'Calculadora Espacial',
@@ -50,33 +51,33 @@ const projects = [
     link: '#'
   },
   {
-    title: 'Clima Cósmico',
-    description: 'App de clima com integração de API e visuais estelares.',
+    title: 'Epic-Forger',
+  description: 'Crie heróis místicos, forje poderes épicos e embarque em missões .',
+  link: 'https://github.com/Davi-Choradeira/-Epic-Forger.git',
+  },
+  {
+    title: 'projeto',
+    description: '0',
     link: '#'
   },
   {
-    title: 'To-Do Planetário',
-    description: 'Lista de tarefas com design orbital e organização em planetas.',
+    title: 'projeto',
+    description: '0.',
     link: '#'
   },
   {
-    title: 'NFT Viewer',
-    description: 'Visualizador de NFTs com galeria animada futurista.',
+    title: 'proejto',
+    description: '0',
     link: '#'
   },
   {
-    title: 'Explorador de APIs',
-    description: 'Projeto de estudo com múltiplas integrações de APIs públicas.',
+    title: 'proejto',
+    description: '0',
     link: '#'
   },
   {
-    title: 'Blog Estelar',
-    description: 'Blog com layout futurista, animações e markdown.',
-    link: '#'
-  },
-  {
-    title: 'Landing Page Quantum',
-    description: 'Página de marketing com UI alienígena e tipografia orbitron.',
+    title: 'proejto',
+    description: '0',
     link: '#'
   },
 
